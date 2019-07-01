@@ -1,4 +1,4 @@
-struct Rectangle<T: Numeric> {
+public struct Rectangle<T: Numeric> {
   let origin: Point2D<T>
   let size: Size<T>
 

@@ -1,4 +1,4 @@
-struct Size<T: Numeric> {
+public struct Size<T: Numeric> {
   let width: T
   let height: T
 }

@@ -1,15 +1,25 @@
 import AVFoundation
 
-struct HSPixelBuffer<T: Numeric> {
-  internal typealias PixelValueType = T
-
+public struct HSPixelBuffer<T: Numeric> {
   private let buffer: CVPixelBuffer
 
   public let size: Size<Int>
 
-  init(pixelBuffer buffer: CVPixelBuffer) {
+  public init(pixelBuffer buffer: CVPixelBuffer) {
     self.buffer = buffer
     size = pixelSizeOf(buffer: buffer)
+  }
+
+  public init(depthData: AVDepthData) {
+    let pixelBuffer = depthData.depthDataMap
+    self.init(pixelBuffer: pixelBuffer)
+  }
+
+  public init?(sampleBuffer: CMSampleBuffer) {
+    guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) as CVPixelBuffer? else {
+      return nil
+    }
+    self.init(pixelBuffer: pixelBuffer)
   }
 
   public var bytesPerRow: Int {

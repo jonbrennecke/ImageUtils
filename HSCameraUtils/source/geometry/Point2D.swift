@@ -1,4 +1,4 @@
-struct Point2D<T: Numeric> {
+public struct Point2D<T: Numeric> {
   let x: T
   let y: T
 
