@@ -1,7 +1,7 @@
 import AVFoundation
 
 public struct HSPixelBuffer<T: Numeric> {
-  private let buffer: CVPixelBuffer
+  public let buffer: CVPixelBuffer
 
   public let size: Size<Int>
 
