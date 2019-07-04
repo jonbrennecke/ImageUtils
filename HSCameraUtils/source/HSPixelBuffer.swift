@@ -1,13 +1,11 @@
 import AVFoundation
+import CoreImage
 
 public struct HSPixelBuffer<T: Numeric> {
   public let buffer: CVPixelBuffer
 
-  public let size: Size<Int>
-
   public init(pixelBuffer buffer: CVPixelBuffer) {
     self.buffer = buffer
-    size = pixelSizeOf(buffer: buffer)
   }
 
   public init(depthData: AVDepthData) {
@@ -22,9 +20,32 @@ public struct HSPixelBuffer<T: Numeric> {
     self.init(pixelBuffer: pixelBuffer)
   }
 
+  public var size: Size<Int> {
+    return withLockedBaseAddress(buffer) { buffer in
+      pixelSizeOf(buffer: buffer)
+    }
+  }
+
   public var bytesPerRow: Int {
     return withLockedBaseAddress(buffer) { buffer in
       CVPixelBufferGetBytesPerRow(buffer)
+    }
+  }
+
+  public var pixelFormatType: OSType {
+    return withLockedBaseAddress(buffer) { buffer in
+      CVPixelBufferGetPixelFormatType(buffer)
+    }
+  }
+
+  public var bufferInfo: HSBufferInfo {
+    return HSBufferInfo(pixelFormatType: pixelFormatType)
+  }
+
+  public func withUnsafeRawPointer<R>(_ fn: (UnsafeRawPointer) -> R) -> R {
+    return withLockedBaseAddress(buffer) { buffer in
+      let rawPtr = CVPixelBufferGetBaseAddress(buffer)
+      return fn(rawPtr!.assumingMemoryBound(to: T.self))
     }
   }
 
@@ -79,5 +100,38 @@ public struct HSPixelBuffer<T: Numeric> {
       ret[i] = pixel
     }
     return ret
+  }
+
+  public func byResizing(to toSize: Size<Int>, in _: CIContext, with pool: CVPixelBufferPool) -> HSPixelBuffer<T>? {
+    let ciImage = CIImage(cvPixelBuffer: buffer)
+    let scaleX = CGFloat(toSize.width) / CGFloat(size.width)
+    let scaleY = CGFloat(toSize.height) / CGFloat(size.height)
+    let transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+    let cropRect = CGRect(origin: .zero, size: CGSize(width: toSize.width, height: toSize.height))
+    let scaledImage = ciImage
+      .transformed(by: transform)
+      .cropped(to: cropRect)
+
+    let ctx = CIContext()
+
+    // create output buffer
+    var emptyBuffer: CVPixelBuffer?
+    let status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pool, &emptyBuffer)
+    guard let resizedBuffer = emptyBuffer, status == kCVReturnSuccess else {
+      return nil
+    }
+
+    ctx.render(scaledImage, to: resizedBuffer)
+    return HSPixelBuffer<T>(pixelBuffer: resizedBuffer)
+  }
+
+  public func byMapping<R: Numeric>(
+    to bufferInfo: HSBufferInfo, _ transform: (T, Point2D<Int>) -> R
+  ) -> HSPixelBuffer<R>? {
+    var pixels = mapPixels(transform)
+    guard let pixelBuffer = createBuffer(with: &pixels, size: size, bufferInfo: bufferInfo) else {
+      return nil
+    }
+    return HSPixelBuffer<R>(pixelBuffer: pixelBuffer)
   }
 }

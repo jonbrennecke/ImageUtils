@@ -41,36 +41,8 @@ internal func createBuffer(with image: UIImage) -> CVPixelBuffer? {
   return pixelBuffer
 }
 
-enum BufferType {
-  case depthFloat32
-  case argbFloat32
-  case grayScaleUInt8
-
-  public var pixelFormat: OSType {
-    switch self {
-    case .depthFloat32:
-      return kCVPixelFormatType_DepthFloat32
-    case .argbFloat32:
-      return kCVPixelFormatType_32ARGB
-    case .grayScaleUInt8:
-      return kCVPixelFormatType_OneComponent8
-    }
-  }
-
-  public var bytesPerPixel: Int {
-    switch self {
-    case .depthFloat32:
-      return MemoryLayout<Float32>.size
-    case .argbFloat32:
-      return MemoryLayout<Float32>.size
-    case .grayScaleUInt8:
-      return MemoryLayout<UInt8>.size
-    }
-  }
-}
-
-internal func createBuffer<T>(
-  with pixelValues: inout [T], size: Size<Int>, bufferType: BufferType
+public func createBuffer<T>(
+  with pixels: UnsafeMutablePointer<T>, size: Size<Int>, bufferInfo: HSBufferInfo
 ) -> CVPixelBuffer? {
   let attrs = [
     kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
@@ -84,9 +56,9 @@ internal func createBuffer<T>(
     kCFAllocatorDefault,
     size.width,
     size.height,
-    bufferType.pixelFormat,
-    &pixelValues,
-    bufferType.bytesPerPixel * size.width,
+    bufferInfo.pixelFormatType,
+    pixels,
+    bufferInfo.bytesPerPixel * size.width,
     releaseCallback,
     nil,
     attrs,

@@ -16,6 +16,7 @@
 		FC664F3D22CADC2000FD8AE7 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67022CAB018003EA230 /* Size.swift */; };
 		FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67222CAB02B003EA230 /* Point2D.swift */; };
 		FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67422CAB046003EA230 /* Rectangle.swift */; };
+		FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,17 +33,17 @@
 
 /* Begin PBXFileReference section */
 		FC664F3022CADBF800FD8AE7 /* libHSCameraUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHSCameraUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC71B66722CAAFCF003EA230 /* backflip_camera_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = backflip_camera_utils.h; sourceTree = "<group>"; };
 		FC71B66822CAAFCF003EA230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC71B67022CAB018003EA230 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		FC71B67022CAB018003EA230 /* Size.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B67222CAB02B003EA230 /* Point2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point2D.swift; sourceTree = "<group>"; };
 		FC71B67422CAB046003EA230 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		FC71B67822CAB077003EA230 /* pixelBufferUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixelBufferUtils.swift; sourceTree = "<group>"; };
 		FC71B67A22CAB09A003EA230 /* depthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = depthUtils.swift; sourceTree = "<group>"; };
 		FC71B67C22CAB0AF003EA230 /* mathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathUtils.swift; sourceTree = "<group>"; };
 		FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSPixelBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
-		FC71B68022CAB163003EA230 /* HSImageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; };
+		FC71B68022CAB163003EA230 /* HSImageBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSAuxiliaryImageData.swift; sourceTree = "<group>"; };
+		FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSBufferInfo.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				FC71B66F22CAB008003EA230 /* source */,
-				FC71B66722CAAFCF003EA230 /* backflip_camera_utils.h */,
 				FC71B66822CAAFCF003EA230 /* Info.plist */,
 			);
 			path = HSCameraUtils;
@@ -90,6 +90,7 @@
 				FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */,
 				FC71B68022CAB163003EA230 /* HSImageBuffer.swift */,
 				FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */,
+				FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -175,6 +176,7 @@
 				FC664F3B22CADC1D00FD8AE7 /* depthUtils.swift in Sources */,
 				FC664F3D22CADC2000FD8AE7 /* Size.swift in Sources */,
 				FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */,
+				FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */,
 				FC664F3822CADC1800FD8AE7 /* HSImageBuffer.swift in Sources */,
 				FC664F3722CADC1800FD8AE7 /* HSPixelBuffer.swift in Sources */,
 				FC664F3C22CADC1D00FD8AE7 /* mathUtils.swift in Sources */,

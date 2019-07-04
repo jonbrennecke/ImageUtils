@@ -1,6 +1,11 @@
 public struct Size<T: Numeric> {
-  let width: T
-  let height: T
+  public let width: T
+  public let height: T
+
+  public init(width: T, height: T) {
+    self.width = width
+    self.height = height
+  }
 }
 
 extension Size where T: Comparable & SignedInteger {
