@@ -50,7 +50,7 @@ public struct HSBufferInfo {
     switch pixelFormatType {
     case kCVPixelFormatType_DisparityFloat16,
          kCVPixelFormatType_DepthFloat16:
-      return MemoryLayout<Float32>.size / 2
+      return MemoryLayout<UInt16>.size
     case kCVPixelFormatType_DisparityFloat32,
          kCVPixelFormatType_DepthFloat32:
       return MemoryLayout<Float32>.size
@@ -69,7 +69,7 @@ public struct HSBufferInfo {
     switch pixelFormatType {
     case kCVPixelFormatType_DisparityFloat16,
          kCVPixelFormatType_DepthFloat16:
-      return MemoryLayout<Float32>.size / 2
+      return MemoryLayout<UInt16>.size
     case kCVPixelFormatType_DisparityFloat32,
          kCVPixelFormatType_DepthFloat32:
       return MemoryLayout<Float32>.size

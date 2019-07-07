@@ -20,8 +20,8 @@ public struct Rectangle<T: Numeric> {
 
 extension Rectangle where T: Comparable & SignedInteger {
   internal func forEach(_ callback: (Point2D<T>) -> Void) {
-    for x in stride(from: x, to: x + width, by: 1) {
-      for y in stride(from: y, to: y + height, by: 1) {
+    for y in stride(from: y, to: y + height, by: 1) {
+      for x in stride(from: x, to: x + width, by: 1) {
         callback(Point2D(x: x, y: y))
       }
     }

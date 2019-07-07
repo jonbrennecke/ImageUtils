@@ -16,6 +16,8 @@
 		FC664F3D22CADC2000FD8AE7 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67022CAB018003EA230 /* Size.swift */; };
 		FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67222CAB02B003EA230 /* Point2D.swift */; };
 		FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67422CAB046003EA230 /* Rectangle.swift */; };
+		FC8C3D3F22CFF50F007015C8 /* transformUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */; };
+		FCD474B822CE92B800A279CF /* HSPixelBufferIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */; };
 		FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,13 +38,15 @@
 		FC71B66822CAAFCF003EA230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC71B67022CAB018003EA230 /* Size.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B67222CAB02B003EA230 /* Point2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point2D.swift; sourceTree = "<group>"; };
-		FC71B67422CAB046003EA230 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
-		FC71B67822CAB077003EA230 /* pixelBufferUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pixelBufferUtils.swift; sourceTree = "<group>"; };
+		FC71B67422CAB046003EA230 /* Rectangle.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FC71B67822CAB077003EA230 /* pixelBufferUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = pixelBufferUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B67A22CAB09A003EA230 /* depthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = depthUtils.swift; sourceTree = "<group>"; };
 		FC71B67C22CAB0AF003EA230 /* mathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathUtils.swift; sourceTree = "<group>"; };
 		FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSPixelBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68022CAB163003EA230 /* HSImageBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSAuxiliaryImageData.swift; sourceTree = "<group>"; };
+		FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = transformUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSPixelBufferIterator.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSBufferInfo.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
@@ -89,6 +93,7 @@
 				FC71B67622CAB04E003EA230 /* geometry */,
 				FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */,
 				FC71B68022CAB163003EA230 /* HSImageBuffer.swift */,
+				FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */,
 				FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */,
 				FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */,
 			);
@@ -111,6 +116,7 @@
 				FC71B67822CAB077003EA230 /* pixelBufferUtils.swift */,
 				FC71B67A22CAB09A003EA230 /* depthUtils.swift */,
 				FC71B67C22CAB0AF003EA230 /* mathUtils.swift */,
+				FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -172,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD474B822CE92B800A279CF /* HSPixelBufferIterator.swift in Sources */,
 				FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */,
 				FC664F3B22CADC1D00FD8AE7 /* depthUtils.swift in Sources */,
 				FC664F3D22CADC2000FD8AE7 /* Size.swift in Sources */,
@@ -181,6 +188,7 @@
 				FC664F3722CADC1800FD8AE7 /* HSPixelBuffer.swift in Sources */,
 				FC664F3C22CADC1D00FD8AE7 /* mathUtils.swift in Sources */,
 				FC664F3A22CADC1D00FD8AE7 /* pixelBufferUtils.swift in Sources */,
+				FC8C3D3F22CFF50F007015C8 /* transformUtils.swift in Sources */,
 				FC664F3922CADC1800FD8AE7 /* HSAuxiliaryImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

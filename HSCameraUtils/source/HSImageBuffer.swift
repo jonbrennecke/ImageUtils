@@ -1,15 +1,13 @@
 import AVFoundation
 
-public struct HSImageBuffer<T: Numeric> {
-  typealias PixelValueType = T
-
-  private let pixelBuffer: HSPixelBuffer<T>
+public struct HSImageBuffer {
+  private let pixelBuffer: HSPixelBuffer
 
   public var size: Size<Int> {
     return pixelBuffer.size
   }
 
-  public init(pixelBuffer: HSPixelBuffer<T>) {
+  public init(pixelBuffer: HSPixelBuffer) {
     self.pixelBuffer = pixelBuffer
   }
 
@@ -17,11 +15,16 @@ public struct HSImageBuffer<T: Numeric> {
     let bufferInfo = pixelBuffer.bufferInfo
     let bytesPerRow = pixelBuffer.bytesPerRow
     let totalBytes = size.height * pixelBuffer.bytesPerRow
-    return pixelBuffer.withUnsafeRawPointer { ptr -> CGImage? in
+    return pixelBuffer.withDataPointer { ptr -> CGImage? in
       let releaseData: CGDataProviderReleaseDataCallback = {
         (_: UnsafeMutableRawPointer?, _: UnsafeRawPointer, _: Int) -> Void in
       }
-      guard let provider = CGDataProvider(dataInfo: nil, data: ptr, size: totalBytes, releaseData: releaseData) else {
+      guard let provider = CGDataProvider(
+        dataInfo: nil,
+        data: ptr,
+        size: totalBytes,
+        releaseData: releaseData
+      ) else {
         return nil
       }
       return CGImage(

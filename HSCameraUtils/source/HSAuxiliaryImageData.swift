@@ -10,13 +10,13 @@ class HSAuxiliaryImageData {
   }()
 
   private let segmentationMatte: AVPortraitEffectsMatte
-  public lazy var segmentationMatteBuffer: HSPixelBuffer<UInt8> = {
-    HSPixelBuffer<UInt8>(pixelBuffer: segmentationMatte.mattingImage)
+  public lazy var segmentationMatteBuffer: HSPixelBuffer = {
+    HSPixelBuffer(pixelBuffer: segmentationMatte.mattingImage)
   }()
 
   private let depthData: AVDepthData
-  public lazy var depthBuffer: HSPixelBuffer<Float32> = {
-    HSPixelBuffer<Float32>(pixelBuffer: depthData.depthDataMap)
+  public lazy var depthBuffer: HSPixelBuffer = {
+    HSPixelBuffer(pixelBuffer: depthData.depthDataMap)
   }()
 
   init?(data: Data) {
