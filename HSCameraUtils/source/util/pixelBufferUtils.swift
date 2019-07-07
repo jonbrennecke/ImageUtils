@@ -49,3 +49,12 @@ public func createBuffer(
   }
   return buffer
 }
+
+public func createPixelBuffer(with pool: CVPixelBufferPool) -> CVPixelBuffer? {
+  var destPixelBuffer: CVPixelBuffer!
+  let status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pool, &destPixelBuffer)
+  guard status == kCVReturnSuccess else {
+    return nil
+  }
+  return destPixelBuffer
+}

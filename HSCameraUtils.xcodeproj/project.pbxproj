@@ -41,7 +41,7 @@
 		FC71B67422CAB046003EA230 /* Rectangle.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B67822CAB077003EA230 /* pixelBufferUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = pixelBufferUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B67A22CAB09A003EA230 /* depthUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = depthUtils.swift; sourceTree = "<group>"; };
-		FC71B67C22CAB0AF003EA230 /* mathUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathUtils.swift; sourceTree = "<group>"; };
+		FC71B67C22CAB0AF003EA230 /* mathUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = mathUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSPixelBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68022CAB163003EA230 /* HSImageBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSAuxiliaryImageData.swift; sourceTree = "<group>"; };

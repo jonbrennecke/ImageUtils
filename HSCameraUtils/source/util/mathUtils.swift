@@ -33,3 +33,37 @@ internal func translate(_ size: Size<Int>, from fromSize: Size<Int>, to toSize: 
   let heightRatio = Float(toSize.height) / Float(fromSize.height)
   return Size(width: Int(Float(size.width) * widthRatio), height: Int(Float(size.height) * heightRatio))
 }
+
+public protocol Bounded {
+  associatedtype Element: Comparable
+
+  func bounds() -> ClosedRange<Element>
+}
+
+extension Array: Bounded where Element: FloatingPoint {
+  public func bounds() -> ClosedRange<Element> {
+    var min: Element = Element.greatestFiniteMagnitude
+    var max: Element = Element.leastNonzeroMagnitude
+    forEach { x in
+      if x < min {
+        min = x
+      } else if x > max {
+        max = x
+      }
+    }
+    return min ... max
+  }
+}
+
+public func bounds<T: FloatingPoint>(_ forEach: ((T) -> Void) -> Void) -> ClosedRange<T> {
+  var min: T = T.greatestFiniteMagnitude
+  var max: T = T.leastNonzeroMagnitude
+  forEach { x in
+    if x < min {
+      min = x
+    } else if x > max {
+      max = x
+    }
+  }
+  return min ... max
+}

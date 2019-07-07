@@ -59,6 +59,8 @@ public func resize(
     return nil
   }
 
+  // save vImageBuffer to CVPixelBuffer
+  
   var cgImageFormat = vImage_CGImageFormat(
     bitsPerComponent: UInt32(bufferInfo.bitsPerComponent),
     bitsPerPixel: UInt32(bufferInfo.bitsPerPixel),
@@ -90,15 +92,6 @@ public func resize(
   }
   free(destData)
   return HSPixelBuffer(pixelBuffer: destPixelBuffer)
-}
-
-fileprivate func createPixelBuffer(with pool: CVPixelBufferPool) -> CVPixelBuffer? {
-  var destPixelBuffer: CVPixelBuffer!
-  let status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pool, &destPixelBuffer)
-  guard status == kCVReturnSuccess else {
-    return nil
-  }
-  return destPixelBuffer
 }
 
 public func map<T: Numeric, R: Numeric>(
