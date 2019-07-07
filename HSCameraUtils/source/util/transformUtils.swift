@@ -4,7 +4,8 @@ import AVFoundation
 public func resize(
   _ pixelBuffer: HSPixelBuffer,
   to outputSize: Size<Int>,
-  pixelBufferPool: CVPixelBufferPool
+  pixelBufferPool: CVPixelBufferPool,
+  isGrayscale: Bool = false
 ) -> HSPixelBuffer? {
   let bufferInfo = pixelBuffer.bufferInfo
 
@@ -38,17 +39,22 @@ public func resize(
   )
 
   // scale
-  let resizeFlags = vImage_Flags(kvImageBackgroundColorFill)
-  let error = vImageScale_ARGB8888(&srcBuffer, &destBuffer, nil, resizeFlags)
-  if error != kvImageNoError {
-    free(destData)
-    return nil
+  let resizeFlags = vImage_Flags(kvImageHighQualityResampling)
+  if isGrayscale {
+    let error = vImageScale_Planar8(&srcBuffer, &destBuffer, nil, resizeFlags)
+    if error != kvImageNoError {
+      free(destData)
+      return nil
+    }
+  } else {
+    let error = vImageScale_ARGB8888(&srcBuffer, &destBuffer, nil, resizeFlags)
+    if error != kvImageNoError {
+      free(destData)
+      return nil
+    }
   }
 
-  // create pixel buffer with pool
-  var destPixelBuffer: CVPixelBuffer!
-  let status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pixelBufferPool, &destPixelBuffer)
-  guard status == kCVReturnSuccess else {
+  guard let destPixelBuffer = createPixelBuffer(with: pixelBufferPool) else {
     free(destData)
     return nil
   }
@@ -69,7 +75,6 @@ public func resize(
   }
   vImageCVImageFormat_SetColorSpace(cvImageFormat, bufferInfo.colorSpace)
 
-//  let debugFlags = vImage_Flags(kvImagePrintDiagnosticsToConsole)
   let copyError = vImageBuffer_CopyToCVPixelBuffer(
     &destBuffer,
     &cgImageFormat,
@@ -77,7 +82,6 @@ public func resize(
     cvImageFormat,
     nil,
     vImage_Flags(kvImageNoFlags)
-//    debugFlags
   )
 
   if copyError != kvImageNoError {
@@ -86,6 +90,15 @@ public func resize(
   }
   free(destData)
   return HSPixelBuffer(pixelBuffer: destPixelBuffer)
+}
+
+fileprivate func createPixelBuffer(with pool: CVPixelBufferPool) -> CVPixelBuffer? {
+  var destPixelBuffer: CVPixelBuffer!
+  let status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pool, &destPixelBuffer)
+  guard status == kCVReturnSuccess else {
+    return nil
+  }
+  return destPixelBuffer
 }
 
 public func map<T: Numeric, R: Numeric>(
