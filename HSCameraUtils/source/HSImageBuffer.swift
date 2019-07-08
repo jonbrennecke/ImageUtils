@@ -1,4 +1,5 @@
 import AVFoundation
+import Accelerate
 
 public struct HSImageBuffer {
   private let pixelBuffer: HSPixelBuffer
@@ -10,36 +11,42 @@ public struct HSImageBuffer {
   public init(pixelBuffer: HSPixelBuffer) {
     self.pixelBuffer = pixelBuffer
   }
-
-  public func makeImage() -> CGImage? {
-    let bufferInfo = pixelBuffer.bufferInfo
-    let bytesPerRow = pixelBuffer.bytesPerRow
-    let totalBytes = size.height * pixelBuffer.bytesPerRow
-    return pixelBuffer.withDataPointer { ptr -> CGImage? in
-      let releaseData: CGDataProviderReleaseDataCallback = {
-        (_: UnsafeMutableRawPointer?, _: UnsafeRawPointer, _: Int) -> Void in
-      }
-      guard let provider = CGDataProvider(
-        dataInfo: nil,
+  
+  public func makeVImageBuffer() -> vImage_Buffer {
+    return pixelBuffer.withMutableDataPointer { ptr -> vImage_Buffer in
+      return vImage_Buffer(
         data: ptr,
-        size: totalBytes,
-        releaseData: releaseData
-      ) else {
-        return nil
-      }
-      return CGImage(
-        width: size.width,
-        height: size.height,
-        bitsPerComponent: bufferInfo.bitsPerComponent,
-        bitsPerPixel: bufferInfo.bitsPerPixel,
-        bytesPerRow: bytesPerRow,
-        space: bufferInfo.colorSpace,
-        bitmapInfo: bufferInfo.bitmapInfo,
-        provider: provider,
-        decode: nil,
-        shouldInterpolate: false,
-        intent: .defaultIntent
+        height: vImagePixelCount(size.height),
+        width: vImagePixelCount(size.width),
+        rowBytes: pixelBuffer.bytesPerRow
       )
     }
+  }
+  
+  public func makeImage() -> CGImage? {
+    var buffer = makeVImageBuffer()
+    let bufferInfo = pixelBuffer.bufferInfo
+    var cgImageFormat = vImage_CGImageFormat(
+      bitsPerComponent: UInt32(bufferInfo.bitsPerComponent),
+      bitsPerPixel: UInt32(bufferInfo.bitsPerPixel),
+      colorSpace: Unmanaged.passRetained(bufferInfo.colorSpace),
+      bitmapInfo: bufferInfo.bitmapInfo,
+      version: 0,
+      decode: nil,
+      renderingIntent: .defaultIntent
+    )
+    var error: vImage_Error = kvImageNoError
+    let image = vImageCreateCGImageFromBuffer(
+      &buffer,
+      &cgImageFormat,
+      nil,
+      nil,
+      vImage_Flags(kvImageNoFlags),
+      &error
+    )
+    guard error == kvImageNoError else {
+      return nil
+    }
+    return image?.takeRetainedValue()
   }
 }

@@ -96,47 +96,26 @@ public func resize(
 
 public func map<T: Numeric, R: Numeric>(
   _ iterator: HSPixelBufferIterator<T>,
-  to pixelFormatType: OSType,
+  pixelFormatType: OSType,
+  pixelBufferPool: CVPixelBufferPool,
   transform: (T) -> R
 ) -> HSPixelBufferIterator<R>? {
   var pixels = iterator.mapPixels { x, _ in transform(x) }
   let pixelBuffer = iterator.pixelBuffer
   let destBufferInfo = HSBufferInfo(pixelFormatType: pixelFormatType)
-
   let destHeight = pixelBuffer.size.height
   let destWidth = pixelBuffer.size.width
-  let destTotalBytes = destHeight * destWidth * destBufferInfo.bytesPerPixel
   let destBytesPerRow = destWidth * destBufferInfo.bytesPerPixel
-  guard let destData = malloc(destTotalBytes) else {
+  var destBuffer = vImage_Buffer(
+    data: &pixels,
+    height: vImagePixelCount(destHeight),
+    width: vImagePixelCount(destWidth),
+    rowBytes: destBytesPerRow
+  )
+  guard var destPixelBuffer = createPixelBuffer(with: pixelBufferPool) else {
     return nil
   }
-  memcpy(destData, &pixels, destTotalBytes)
-
-  // create output CVPixelBuffer
-  let attrs = [
-    kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
-    kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue,
-  ] as CFDictionary
-  let releaseCallback: CVPixelBufferReleaseBytesCallback = { _, ptr in
-    if let ptr = ptr {
-      free(UnsafeMutableRawPointer(mutating: ptr))
-    }
-  }
-  var destPixelBuffer: CVPixelBuffer!
-  let status = CVPixelBufferCreateWithBytes(
-    kCFAllocatorDefault,
-    Int(destWidth),
-    Int(destHeight),
-    destBufferInfo.pixelFormatType,
-    destData,
-    destBytesPerRow,
-    releaseCallback,
-    nil,
-    attrs,
-    &destPixelBuffer
-  )
-  guard status == kCVReturnSuccess else {
-    free(destData)
+  guard case .some = copy(buffer: &destBuffer, to: &destPixelBuffer, bufferInfo: destBufferInfo) else {
     return nil
   }
   let buffer = HSPixelBuffer(pixelBuffer: destPixelBuffer)

@@ -63,56 +63,6 @@ public struct HSPixelBufferIterator<T: Numeric> {
     }
     return ret
   }
-
-//  public func byMapping<R: Numeric>(
-//    to bufferInfo: HSBufferInfo, _ transform: (T, Point2D<Int>) -> R
-//  ) -> HSPixelBufferIterator<R>? {
-//    var pixels = mapPixels(transform)
-//    let srcHeight = vImagePixelCount(pixelBuffer.size.height)
-//    let srcWidth = vImagePixelCount(pixelBuffer.size.width)
-//    let srcBytesPerRow = pixelBuffer.size.width * bufferInfo.bytesPerPixel
-//    var srcBuffer = vImage_Buffer(data: &pixels, height: srcHeight, width: srcWidth, rowBytes: srcBytesPerRow)
-//    let destTotalBytes = pixels.count * bufferInfo.bytesPerPixel
-//    let destBytesPerRow = pixelBuffer.size.width * bufferInfo.bytesPerPixel
-//    guard let destData = malloc(destTotalBytes) else {
-//      return nil
-//    }
-//    let destHeight = vImagePixelCount(pixelBuffer.size.height)
-//    let destWidth = vImagePixelCount(pixelBuffer.size.width)
-//    var destBuffer = vImage_Buffer(data: destData, height: destHeight, width: destWidth, rowBytes: destBytesPerRow)
-//    let error = vImageScale_ARGB8888(&srcBuffer, &destBuffer, nil, vImage_Flags(0))
-//    if error != kvImageNoError {
-//      free(destData)
-//      return nil
-//    }
-//    let attrs = [
-//      kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue,
-//      kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue,
-//      ] as CFDictionary
-//    let releaseCallback: CVPixelBufferReleaseBytesCallback = { _, ptr in
-//      if let ptr = ptr {
-//        free(UnsafeMutableRawPointer(mutating: ptr))
-//      }
-//    }
-//    var destPixelBuffer: CVPixelBuffer!
-//    let status = CVPixelBufferCreateWithBytes(
-//      kCFAllocatorDefault,
-//      pixelBuffer.size.width,
-//      pixelBuffer.size.height,
-//      bufferInfo.pixelFormatType,
-//      destData,
-//      destBytesPerRow,
-//      releaseCallback,
-//      destData,
-//      attrs,
-//      &destPixelBuffer
-//    )
-//    guard status == kCVReturnSuccess else {
-//      return nil
-//    }
-//    let buffer = HSPixelBuffer(pixelBuffer: destPixelBuffer)
-//    return HSPixelBufferIterator<R>(pixelBuffer: buffer)
-//  }
 }
 
 extension HSPixelBufferIterator where T: FloatingPoint {
