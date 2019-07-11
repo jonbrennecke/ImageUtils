@@ -91,3 +91,20 @@ public func copy(buffer: inout vImage_Buffer, to pixelBuffer: inout CVPixelBuffe
   
   return pixelBuffer
 }
+
+public func createCVPixelBufferPool(size: Size<Int>, pixelFormatType: OSType) -> CVPixelBufferPool? {
+  let poolAttributes = [kCVPixelBufferPoolMinimumBufferCountKey: 1] as CFDictionary
+  let bufferAttributes = [
+    kCVPixelBufferCGImageCompatibilityKey: true,
+    kCVPixelBufferCGBitmapContextCompatibilityKey: true,
+    kCVPixelBufferPixelFormatTypeKey: pixelFormatType,
+    kCVPixelBufferWidthKey: size.width,
+    kCVPixelBufferHeightKey: size.height,
+    ] as [String: Any] as CFDictionary
+  var pool: CVPixelBufferPool!
+  let status = CVPixelBufferPoolCreate(kCFAllocatorDefault, poolAttributes, bufferAttributes, &pool)
+  if status != kCVReturnSuccess {
+    return nil
+  }
+  return pool
+}

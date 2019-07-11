@@ -78,7 +78,8 @@ public struct HSImageBuffer {
     )
     
     // scale
-    let resizeFlags = vImage_Flags(kvImageHighQualityResampling)
+    let resizeFlags = vImage_Flags(kvImageNoFlags)
+    // TODO: (works but slower): let resizeFlags = vImage_Flags(kvImageHighQualityResampling)
     if isGrayscale {
       let error = vImageScale_Planar8(&srcBuffer, &destBuffer, nil, resizeFlags)
       if error != kvImageNoError {

@@ -62,7 +62,7 @@ public struct HSPixelBuffer {
     }
   }
 
-  public func makeIterator<T: Numeric>() -> HSPixelBufferIterator<T> {
+  public func makeIterator<T>() -> HSPixelBufferIterator<T> {
     return HSPixelBufferIterator(pixelBuffer: self)
   }
 }

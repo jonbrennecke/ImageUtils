@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC114C0422D3DA7D008F333B /* HS32BGRAPixelValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */; };
 		FC664F3722CADC1800FD8AE7 /* HSPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */; };
 		FC664F3822CADC1800FD8AE7 /* HSImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B68022CAB163003EA230 /* HSImageBuffer.swift */; };
 		FC664F3922CADC1800FD8AE7 /* HSAuxiliaryImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HS32BGRAPixelValue.swift; sourceTree = "<group>"; };
 		FC664F3022CADBF800FD8AE7 /* libHSCameraUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHSCameraUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC71B66822CAAFCF003EA230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC71B67022CAB018003EA230 /* Size.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -96,6 +98,7 @@
 				FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */,
 				FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */,
 				FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */,
+				FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				FCD474B822CE92B800A279CF /* HSPixelBufferIterator.swift in Sources */,
 				FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */,
 				FC664F3B22CADC1D00FD8AE7 /* depthUtils.swift in Sources */,
+				FC114C0422D3DA7D008F333B /* HS32BGRAPixelValue.swift in Sources */,
 				FC664F3D22CADC2000FD8AE7 /* Size.swift in Sources */,
 				FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */,
 				FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */,

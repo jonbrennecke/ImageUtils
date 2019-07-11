@@ -2,7 +2,7 @@ import AVFoundation
 import CoreImage
 
 @available(iOS 12.0, *)
-class HSAuxiliaryImageData {
+public class HSAuxiliaryImageData {
   public let image: CGImage
 
   public lazy var ciImage: CIImage = {
@@ -16,10 +16,11 @@ class HSAuxiliaryImageData {
 
   private let depthData: AVDepthData
   public lazy var depthBuffer: HSPixelBuffer = {
-    HSPixelBuffer(pixelBuffer: depthData.depthDataMap)
+    let depthDataFloat32 = depthData.converting(toDepthDataType: kCVPixelFormatType_DisparityFloat32)
+    return HSPixelBuffer(pixelBuffer: depthDataFloat32.depthDataMap)
   }()
 
-  init?(data: Data) {
+  public init?(data: Data) {
     guard
       let imageSource = createImageSource(with: data),
       let depthData = createDepthData(with: imageSource),

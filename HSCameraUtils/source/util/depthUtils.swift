@@ -7,7 +7,7 @@ internal func createDepthData(with imageSource: CGImageSource) -> AVDepthData? {
       imageSource, 0, kCGImageAuxiliaryDataTypeDisparity
     ) as? [AnyHashable: Any],
     let depthData = try? AVDepthData(fromDictionaryRepresentation: disparityInfo) {
-    return depthData.converting(toDepthDataType: kCVPixelFormatType_DepthFloat32)
+    return depthData
   }
 
   if
