@@ -18,6 +18,7 @@
 		FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67222CAB02B003EA230 /* Point2D.swift */; };
 		FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67422CAB046003EA230 /* Rectangle.swift */; };
 		FC8C3D3F22CFF50F007015C8 /* transformUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */; };
+		FCB7739822D7B87D0049BC10 /* vImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7739722D7B87D0049BC10 /* vImageUtils.swift */; };
 		FCD474B822CE92B800A279CF /* HSPixelBufferIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */; };
 		FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */; };
 /* End PBXBuildFile section */
@@ -48,8 +49,11 @@
 		FC71B68022CAB163003EA230 /* HSImageBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSAuxiliaryImageData.swift; sourceTree = "<group>"; };
 		FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = transformUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FCB7739722D7B87D0049BC10 /* vImageUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = vImageUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSPixelBufferIterator.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSBufferInfo.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FCE4990D22DE995F0010C590 /* libHSCameraUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libHSCameraUtils.h; sourceTree = "<group>"; };
+		FCE4990F22DE99600010C590 /* libHSCameraUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libHSCameraUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				FC71B66622CAAFCF003EA230 /* HSCameraUtils */,
+				FCE4990C22DE995F0010C590 /* libHSCameraUtils */,
 				FC71B66522CAAFCF003EA230 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,8 +125,18 @@
 				FC71B67A22CAB09A003EA230 /* depthUtils.swift */,
 				FC71B67C22CAB0AF003EA230 /* mathUtils.swift */,
 				FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */,
+				FCB7739722D7B87D0049BC10 /* vImageUtils.swift */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		FCE4990C22DE995F0010C590 /* libHSCameraUtils */ = {
+			isa = PBXGroup;
+			children = (
+				FCE4990D22DE995F0010C590 /* libHSCameraUtils.h */,
+				FCE4990F22DE99600010C590 /* libHSCameraUtils.m */,
+			);
+			path = libHSCameraUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +200,7 @@
 				FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */,
 				FC664F3B22CADC1D00FD8AE7 /* depthUtils.swift in Sources */,
 				FC114C0422D3DA7D008F333B /* HS32BGRAPixelValue.swift in Sources */,
+				FCB7739822D7B87D0049BC10 /* vImageUtils.swift in Sources */,
 				FC664F3D22CADC2000FD8AE7 /* Size.swift in Sources */,
 				FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */,
 				FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */,

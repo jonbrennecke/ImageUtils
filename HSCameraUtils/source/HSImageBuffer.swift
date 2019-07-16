@@ -1,5 +1,5 @@
-import AVFoundation
 import Accelerate
+import AVFoundation
 
 public struct HSImageBuffer {
   public let pixelBuffer: HSPixelBuffer
@@ -11,14 +11,14 @@ public struct HSImageBuffer {
   public init(pixelBuffer: HSPixelBuffer) {
     self.pixelBuffer = pixelBuffer
   }
-  
+
   public init(cvPixelBuffer buffer: CVPixelBuffer) {
-    self.pixelBuffer = HSPixelBuffer(pixelBuffer: buffer)
+    pixelBuffer = HSPixelBuffer(pixelBuffer: buffer)
   }
-  
+
   public func makeVImageBuffer() -> vImage_Buffer {
     return pixelBuffer.withMutableDataPointer { ptr -> vImage_Buffer in
-      return vImage_Buffer(
+      vImage_Buffer(
         data: ptr,
         height: vImagePixelCount(size.height),
         width: vImagePixelCount(size.width),
@@ -26,7 +26,7 @@ public struct HSImageBuffer {
       )
     }
   }
-  
+
   public func makeImage() -> CGImage? {
     var buffer = makeVImageBuffer()
     let bufferInfo = pixelBuffer.bufferInfo
@@ -53,7 +53,7 @@ public struct HSImageBuffer {
     }
     return image?.takeRetainedValue()
   }
-  
+
   public func resize(
     to outputSize: Size<Int>,
     pixelBufferPool: CVPixelBufferPool,
@@ -61,10 +61,8 @@ public struct HSImageBuffer {
   ) -> HSImageBuffer? {
     let bufferInfo = pixelBuffer.bufferInfo
     var srcBuffer = makeVImageBuffer()
-    
+
     // create an empty destination vImage_Buffer
-    let destHeight = vImagePixelCount(outputSize.height)
-    let destWidth = vImagePixelCount(outputSize.width)
     let destTotalBytes = outputSize.height * outputSize.width * bufferInfo.bytesPerPixel
     let destBytesPerRow = outputSize.width * bufferInfo.bytesPerPixel
     guard let destData = malloc(destTotalBytes) else {
@@ -72,14 +70,15 @@ public struct HSImageBuffer {
     }
     var destBuffer = vImage_Buffer(
       data: destData,
-      height: destHeight,
-      width: destWidth,
+      height: vImagePixelCount(outputSize.height),
+      width: vImagePixelCount(outputSize.width),
       rowBytes: destBytesPerRow
     )
-    
+
     // scale
     let resizeFlags = vImage_Flags(kvImageNoFlags)
-    // TODO: (works but slower): let resizeFlags = vImage_Flags(kvImageHighQualityResampling)
+    // TODO: (works but slower):
+//    let resizeFlags = vImage_Flags(kvImageHighQualityResampling)
     if isGrayscale {
       let error = vImageScale_Planar8(&srcBuffer, &destBuffer, nil, resizeFlags)
       if error != kvImageNoError {
@@ -93,14 +92,14 @@ public struct HSImageBuffer {
         return nil
       }
     }
-    
+
     guard let destPixelBuffer = createPixelBuffer(with: pixelBufferPool) else {
       free(destData)
       return nil
     }
-    
+
     // save vImageBuffer to CVPixelBuffer
-    
+
     var cgImageFormat = vImage_CGImageFormat(
       bitsPerComponent: UInt32(bufferInfo.bitsPerComponent),
       bitsPerPixel: UInt32(bufferInfo.bitsPerPixel),
@@ -110,13 +109,13 @@ public struct HSImageBuffer {
       decode: nil,
       renderingIntent: .defaultIntent
     )
-    
+
     guard let cvImageFormat = vImageCVImageFormat_CreateWithCVPixelBuffer(destPixelBuffer)?.takeRetainedValue() else {
       free(destData)
       return nil
     }
     vImageCVImageFormat_SetColorSpace(cvImageFormat, bufferInfo.colorSpace)
-    
+
     let copyError = vImageBuffer_CopyToCVPixelBuffer(
       &destBuffer,
       &cgImageFormat,
@@ -125,7 +124,7 @@ public struct HSImageBuffer {
       nil,
       vImage_Flags(kvImageNoFlags)
     )
-    
+
     if copyError != kvImageNoError {
       free(destData)
       return nil

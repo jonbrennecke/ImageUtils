@@ -1,7 +1,6 @@
 import Accelerate
 import AVFoundation
 
-
 public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelBufferPool: CVPixelBufferPool) -> HSPixelBuffer? {
   return pixelBuffer.withMutableDataPointer({ ptr -> HSPixelBuffer? in
     var sourceBuffer = vImage_Buffer(
@@ -13,7 +12,7 @@ public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelB
     let destinationBufferInfo = HSBufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
     let destinationBytesPerRow = pixelBuffer.size.width * destinationBufferInfo.bytesPerPixel
     let destinationTotalBytes = pixelBuffer.size.height * destinationBytesPerRow
-    
+
     var destinationBuffer = vImage_Buffer()
     let initError = vImageBuffer_Init(
       &destinationBuffer,
@@ -28,7 +27,7 @@ public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelB
     defer {
       free(destinationBuffer.data)
     }
-    
+
     let redCoeff = Float(0.2126)
     let greenCoeff = Float(0.7152)
     let blueCoeff = Float(0.0722)
@@ -36,11 +35,11 @@ public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelB
     var coefficientsMatrix = [
       Int16(redCoeff * Float(divisor)),
       Int16(greenCoeff * Float(divisor)),
-      Int16(blueCoeff * Float(divisor))
+      Int16(blueCoeff * Float(divisor)),
     ]
     var preBias: [Int16] = [0, 0, 0, 0]
     let postBias = Int32(0)
-    
+
     let error = vImageMatrixMultiply_ARGB8888ToPlanar8(
       &sourceBuffer,
       &destinationBuffer,
@@ -56,19 +55,19 @@ public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelB
     guard var destinationPixelBuffer = createPixelBuffer(with: pixelBufferPool) else {
       return nil
     }
-    guard case .some = copy(
-      buffer: &destinationBuffer,
+    guard case .some = copyVImageBuffer(
+      &destinationBuffer,
       to: &destinationPixelBuffer,
       bufferInfo: destinationBufferInfo
-      ) else {
-        return nil
+    ) else {
+      return nil
     }
     return HSPixelBuffer(pixelBuffer: destinationPixelBuffer)
   })
 }
 
 public func convertDisparityFloat32PixelBufferToUInt8(
-  pixelBuffer: HSPixelBuffer, pixelBufferPool: CVPixelBufferPool
+  pixelBuffer: HSPixelBuffer, pixelBufferPool: CVPixelBufferPool, bounds: ClosedRange<Float>
 ) -> HSPixelBuffer? {
   return pixelBuffer.withMutableDataPointer({ ptr -> HSPixelBuffer? in
     var sourceBuffer = vImage_Buffer(
@@ -80,7 +79,7 @@ public func convertDisparityFloat32PixelBufferToUInt8(
     let destinationBufferInfo = HSBufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
     let destinationBytesPerRow = pixelBuffer.size.width * destinationBufferInfo.bytesPerPixel
     let destinationTotalBytes = pixelBuffer.size.height * destinationBytesPerRow
-    
+
     var destinationBuffer = vImage_Buffer()
     let initError = vImageBuffer_Init(
       &destinationBuffer,
@@ -98,8 +97,8 @@ public func convertDisparityFloat32PixelBufferToUInt8(
     let error = vImageConvert_PlanarFtoPlanar8(
       &sourceBuffer,
       &destinationBuffer,
-      1,
-      0,
+      bounds.upperBound,
+      bounds.lowerBound,
       vImage_Flags(kvImageNoFlags)
     )
     if error != kvImageNoError {
@@ -108,12 +107,12 @@ public func convertDisparityFloat32PixelBufferToUInt8(
     guard var destinationPixelBuffer = createPixelBuffer(with: pixelBufferPool) else {
       return nil
     }
-    guard case .some = copy(
-      buffer: &destinationBuffer,
+    guard case .some = copyVImageBuffer(
+      &destinationBuffer,
       to: &destinationPixelBuffer,
       bufferInfo: destinationBufferInfo
-      ) else {
-        return nil
+    ) else {
+      return nil
     }
     return HSPixelBuffer(pixelBuffer: destinationPixelBuffer)
   })

@@ -1,6 +1,6 @@
+import Accelerate
 import CoreVideo
 import UIKit
-import Accelerate
 
 internal func withLockedBaseAddress<T>(
   _ buffer: CVPixelBuffer,
@@ -51,6 +51,23 @@ public func createBuffer(
   return buffer
 }
 
+public func createCVPixelBufferPool(size: Size<Int>, pixelFormatType: OSType) -> CVPixelBufferPool? {
+  let poolAttributes = [kCVPixelBufferPoolMinimumBufferCountKey: 1] as CFDictionary
+  let bufferAttributes = [
+    kCVPixelBufferCGImageCompatibilityKey: true,
+    kCVPixelBufferCGBitmapContextCompatibilityKey: true,
+    kCVPixelBufferPixelFormatTypeKey: pixelFormatType,
+    kCVPixelBufferWidthKey: size.width,
+    kCVPixelBufferHeightKey: size.height,
+  ] as [String: Any] as CFDictionary
+  var pool: CVPixelBufferPool!
+  let status = CVPixelBufferPoolCreate(kCFAllocatorDefault, poolAttributes, bufferAttributes, &pool)
+  if status != kCVReturnSuccess {
+    return nil
+  }
+  return pool
+}
+
 public func createPixelBuffer(with pool: CVPixelBufferPool) -> CVPixelBuffer? {
   var destPixelBuffer: CVPixelBuffer!
   let status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, pool, &destPixelBuffer)
@@ -60,51 +77,24 @@ public func createPixelBuffer(with pool: CVPixelBufferPool) -> CVPixelBuffer? {
   return destPixelBuffer
 }
 
-public func copy(buffer: inout vImage_Buffer, to pixelBuffer: inout CVPixelBuffer, bufferInfo: HSBufferInfo) -> CVPixelBuffer? {
-  var cgImageFormat = vImage_CGImageFormat(
-    bitsPerComponent: UInt32(bufferInfo.bitsPerComponent),
-    bitsPerPixel: UInt32(bufferInfo.bitsPerPixel),
-    colorSpace: Unmanaged.passRetained(bufferInfo.colorSpace),
-    bitmapInfo: bufferInfo.bitmapInfo,
-    version: 0,
-    decode: nil,
-    renderingIntent: .defaultIntent
-  )
-  
-  guard let cvImageFormat = vImageCVImageFormat_CreateWithCVPixelBuffer(pixelBuffer)?.takeRetainedValue() else {
+public func createPixelBuffer(
+  data: UnsafeMutableRawPointer,
+  size: Size<Int>,
+  pool: CVPixelBufferPool,
+  bufferInfo: HSBufferInfo
+) -> HSPixelBuffer? {
+  guard var vImageBuffer = createVImageBuffer(
+    data: data,
+    size: size,
+    bufferInfo: bufferInfo
+  ) else {
     return nil
   }
-  vImageCVImageFormat_SetColorSpace(cvImageFormat, bufferInfo.colorSpace)
-  
-  let copyError = vImageBuffer_CopyToCVPixelBuffer(
-    &buffer,
-    &cgImageFormat,
-    pixelBuffer,
-    cvImageFormat,
-    nil,
-    vImage_Flags(kvImageNoFlags)
-  )
-  
-  if copyError != kvImageNoError {
+  guard var pixelBuffer = createPixelBuffer(with: pool) else {
     return nil
   }
-  
-  return pixelBuffer
-}
-
-public func createCVPixelBufferPool(size: Size<Int>, pixelFormatType: OSType) -> CVPixelBufferPool? {
-  let poolAttributes = [kCVPixelBufferPoolMinimumBufferCountKey: 1] as CFDictionary
-  let bufferAttributes = [
-    kCVPixelBufferCGImageCompatibilityKey: true,
-    kCVPixelBufferCGBitmapContextCompatibilityKey: true,
-    kCVPixelBufferPixelFormatTypeKey: pixelFormatType,
-    kCVPixelBufferWidthKey: size.width,
-    kCVPixelBufferHeightKey: size.height,
-    ] as [String: Any] as CFDictionary
-  var pool: CVPixelBufferPool!
-  let status = CVPixelBufferPoolCreate(kCFAllocatorDefault, poolAttributes, bufferAttributes, &pool)
-  if status != kCVReturnSuccess {
-    return nil
+  if case .some = copyVImageBuffer(&vImageBuffer, to: &pixelBuffer, bufferInfo: bufferInfo) {
+    return HSPixelBuffer(pixelBuffer: pixelBuffer)
   }
-  return pool
+  return nil
 }
