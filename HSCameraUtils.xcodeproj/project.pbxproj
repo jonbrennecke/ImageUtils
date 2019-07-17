@@ -70,8 +70,8 @@
 		FC71B65A22CAAFCF003EA230 = {
 			isa = PBXGroup;
 			children = (
+				FC71B66F22CAB008003EA230 /* source */,
 				FC71B66622CAAFCF003EA230 /* HSCameraUtils */,
-				FCE4990C22DE995F0010C590 /* libHSCameraUtils */,
 				FC71B66522CAAFCF003EA230 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,8 +87,9 @@
 		FC71B66622CAAFCF003EA230 /* HSCameraUtils */ = {
 			isa = PBXGroup;
 			children = (
-				FC71B66F22CAB008003EA230 /* source */,
 				FC71B66822CAAFCF003EA230 /* Info.plist */,
+				FCE4990D22DE995F0010C590 /* libHSCameraUtils.h */,
+				FCE4990F22DE99600010C590 /* libHSCameraUtils.m */,
 			);
 			path = HSCameraUtils;
 			sourceTree = "<group>";
@@ -128,15 +129,6 @@
 				FCB7739722D7B87D0049BC10 /* vImageUtils.swift */,
 			);
 			path = util;
-			sourceTree = "<group>";
-		};
-		FCE4990C22DE995F0010C590 /* libHSCameraUtils */ = {
-			isa = PBXGroup;
-			children = (
-				FCE4990D22DE995F0010C590 /* libHSCameraUtils.h */,
-				FCE4990F22DE99600010C590 /* libHSCameraUtils.m */,
-			);
-			path = libHSCameraUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
