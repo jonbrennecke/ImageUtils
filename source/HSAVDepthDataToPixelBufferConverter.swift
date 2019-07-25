@@ -4,7 +4,6 @@ public class HSAVDepthDataToPixelBufferConverter {
   private let size: Size<Int>
   private let pixelFormatType: OSType
 
-
   private lazy var pixelBufferPool: CVPixelBufferPool? = {
     createCVPixelBufferPool(size: size, pixelFormatType: pixelFormatType)
   }()
@@ -21,7 +20,7 @@ public class HSAVDepthDataToPixelBufferConverter {
     let buffer = HSPixelBuffer(depthData: depthData)
 //    let iterator: HSPixelBufferIterator<Float> = buffer.makeIterator()
 //    let bounds = iterator.bounds()
-    let bounds: ClosedRange<Float> = 0.25...3.5
+    let bounds: ClosedRange<Float> = 0.25 ... 3.5
     guard let normalizedPixelBuffer = convertDisparityFloat32PixelBufferToUInt8(
       pixelBuffer: buffer, pixelBufferPool: pool, bounds: bounds
     ) else {

@@ -54,7 +54,7 @@ public struct HSImageBuffer {
     }
     return image?.takeRetainedValue()
   }
-  
+
   public func makeCIImage() -> CIImage? {
     if let cgImage = makeCGImage() {
       return CIImage(cgImage: cgImage)
