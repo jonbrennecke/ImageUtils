@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC2E50A622DEAA5B0044B653 /* depthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509722DEAA5B0044B653 /* depthUtils.swift */; };
+		FC2E50A722DEAA5B0044B653 /* mathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509822DEAA5B0044B653 /* mathUtils.swift */; };
+		FC2E50A822DEAA5B0044B653 /* vImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509922DEAA5B0044B653 /* vImageUtils.swift */; };
+		FC2E50A922DEAA5B0044B653 /* pixelBufferUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509A22DEAA5B0044B653 /* pixelBufferUtils.swift */; };
+		FC2E50AA22DEAA5B0044B653 /* transformUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509B22DEAA5B0044B653 /* transformUtils.swift */; };
+		FC2E50AB22DEAA5B0044B653 /* HS32BGRAPixelValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509C22DEAA5B0044B653 /* HS32BGRAPixelValue.swift */; };
+		FC2E50AC22DEAA5B0044B653 /* HSImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509D22DEAA5B0044B653 /* HSImageBuffer.swift */; };
+		FC2E50AD22DEAA5B0044B653 /* HSPixelBufferIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509E22DEAA5B0044B653 /* HSPixelBufferIterator.swift */; };
+		FC2E50AE22DEAA5B0044B653 /* HSBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E509F22DEAA5B0044B653 /* HSBufferInfo.swift */; };
+		FC2E50AF22DEAA5B0044B653 /* HSAuxiliaryImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E50A022DEAA5B0044B653 /* HSAuxiliaryImageData.swift */; };
+		FC2E50B022DEAA5B0044B653 /* HSPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E50A122DEAA5B0044B653 /* HSPixelBuffer.swift */; };
+		FC2E50B122DEAA5B0044B653 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E50A322DEAA5B0044B653 /* Point2D.swift */; };
+		FC2E50B222DEAA5B0044B653 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E50A422DEAA5B0044B653 /* Size.swift */; };
+		FC2E50B322DEAA5B0044B653 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2E50A522DEAA5B0044B653 /* Rectangle.swift */; };
+		FC964BA522DEA7E4004517DA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC964BA422DEA7E4004517DA /* Empty.swift */; };
+		FC9E2A1F22DE9F5E0019C407 /* HSCameraUtilsMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FC9E2A1E22DE9F5E0019C407 /* HSCameraUtilsMacOS.h */; };
+		FC9E2A2122DE9F5E0019C407 /* HSCameraUtilsMacOS.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9E2A2022DE9F5E0019C407 /* HSCameraUtilsMacOS.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FC2E509722DEAA5B0044B653 /* depthUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = depthUtils.swift; sourceTree = "<group>"; };
+		FC2E509822DEAA5B0044B653 /* mathUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mathUtils.swift; sourceTree = "<group>"; };
+		FC2E509922DEAA5B0044B653 /* vImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vImageUtils.swift; sourceTree = "<group>"; };
+		FC2E509A22DEAA5B0044B653 /* pixelBufferUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pixelBufferUtils.swift; sourceTree = "<group>"; };
+		FC2E509B22DEAA5B0044B653 /* transformUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = transformUtils.swift; sourceTree = "<group>"; };
+		FC2E509C22DEAA5B0044B653 /* HS32BGRAPixelValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HS32BGRAPixelValue.swift; sourceTree = "<group>"; };
+		FC2E509D22DEAA5B0044B653 /* HSImageBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; };
+		FC2E509E22DEAA5B0044B653 /* HSPixelBufferIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSPixelBufferIterator.swift; sourceTree = "<group>"; };
+		FC2E509F22DEAA5B0044B653 /* HSBufferInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSBufferInfo.swift; sourceTree = "<group>"; };
+		FC2E50A022DEAA5B0044B653 /* HSAuxiliaryImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSAuxiliaryImageData.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FC2E50A122DEAA5B0044B653 /* HSPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSPixelBuffer.swift; sourceTree = "<group>"; };
+		FC2E50A322DEAA5B0044B653 /* Point2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point2D.swift; sourceTree = "<group>"; };
+		FC2E50A422DEAA5B0044B653 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		FC2E50A522DEAA5B0044B653 /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
+		FC964BA322DEA7E4004517DA /* HSCameraUtils-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSCameraUtils-Bridging-Header.h"; sourceTree = "<group>"; };
+		FC964BA422DEA7E4004517DA /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		FC9E2A1B22DE9F5D0019C407 /* libHSCameraUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHSCameraUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC9E2A1E22DE9F5E0019C407 /* HSCameraUtilsMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSCameraUtilsMacOS.h; sourceTree = "<group>"; };
+		FC9E2A2022DE9F5E0019C407 /* HSCameraUtilsMacOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSCameraUtilsMacOS.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC9E2A1922DE9F5D0019C407 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC2E509522DEAA5B0044B653 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E509622DEAA5B0044B653 /* util */,
+				FC2E50A222DEAA5B0044B653 /* geometry */,
+				FC2E509C22DEAA5B0044B653 /* HS32BGRAPixelValue.swift */,
+				FC2E509D22DEAA5B0044B653 /* HSImageBuffer.swift */,
+				FC2E509E22DEAA5B0044B653 /* HSPixelBufferIterator.swift */,
+				FC2E509F22DEAA5B0044B653 /* HSBufferInfo.swift */,
+				FC2E50A022DEAA5B0044B653 /* HSAuxiliaryImageData.swift */,
+				FC2E50A122DEAA5B0044B653 /* HSPixelBuffer.swift */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		FC2E509622DEAA5B0044B653 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E509722DEAA5B0044B653 /* depthUtils.swift */,
+				FC2E509822DEAA5B0044B653 /* mathUtils.swift */,
+				FC2E509922DEAA5B0044B653 /* vImageUtils.swift */,
+				FC2E509A22DEAA5B0044B653 /* pixelBufferUtils.swift */,
+				FC2E509B22DEAA5B0044B653 /* transformUtils.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		FC2E50A222DEAA5B0044B653 /* geometry */ = {
+			isa = PBXGroup;
+			children = (
+				FC2E50A322DEAA5B0044B653 /* Point2D.swift */,
+				FC2E50A422DEAA5B0044B653 /* Size.swift */,
+				FC2E50A522DEAA5B0044B653 /* Rectangle.swift */,
+			);
+			path = geometry;
+			sourceTree = "<group>";
+		};
+		FC9E2A1222DE9F5D0019C407 = {
+			isa = PBXGroup;
+			children = (
+				FC2E509522DEAA5B0044B653 /* source */,
+				FC9E2A1D22DE9F5E0019C407 /* HSCameraUtilsMacOS */,
+				FC9E2A1C22DE9F5D0019C407 /* Products */,
+				FC964BA422DEA7E4004517DA /* Empty.swift */,
+				FC964BA322DEA7E4004517DA /* HSCameraUtils-Bridging-Header.h */,
+			);
+			sourceTree = "<group>";
+		};
+		FC9E2A1C22DE9F5D0019C407 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC9E2A1B22DE9F5D0019C407 /* libHSCameraUtils.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC9E2A1D22DE9F5E0019C407 /* HSCameraUtilsMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				FC9E2A1E22DE9F5E0019C407 /* HSCameraUtilsMacOS.h */,
+				FC9E2A2022DE9F5E0019C407 /* HSCameraUtilsMacOS.m */,
+			);
+			path = HSCameraUtilsMacOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FC9E2A1722DE9F5D0019C407 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC9E2A1F22DE9F5E0019C407 /* HSCameraUtilsMacOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FC9E2A1A22DE9F5D0019C407 /* HSCameraUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "HSCameraUtils" */;
+			buildPhases = (
+				FC9E2A1722DE9F5D0019C407 /* Headers */,
+				FC9E2A1822DE9F5D0019C407 /* Sources */,
+				FC9E2A1922DE9F5D0019C407 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HSCameraUtils;
+			productName = HSCameraUtilsMacOS;
+			productReference = FC9E2A1B22DE9F5D0019C407 /* libHSCameraUtils.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC9E2A1322DE9F5D0019C407 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Jonathan Brennecke";
+				TargetAttributes = {
+					FC9E2A1A22DE9F5D0019C407 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+					};
+				};
+			};
+			buildConfigurationList = FC9E2A1622DE9F5D0019C407 /* Build configuration list for PBXProject "HSCameraUtilsMacOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FC9E2A1222DE9F5D0019C407;
+			productRefGroup = FC9E2A1C22DE9F5D0019C407 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC9E2A1A22DE9F5D0019C407 /* HSCameraUtils */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC9E2A1822DE9F5D0019C407 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC2E50AC22DEAA5B0044B653 /* HSImageBuffer.swift in Sources */,
+				FC2E50B222DEAA5B0044B653 /* Size.swift in Sources */,
+				FC2E50A922DEAA5B0044B653 /* pixelBufferUtils.swift in Sources */,
+				FC2E50B122DEAA5B0044B653 /* Point2D.swift in Sources */,
+				FC2E50A622DEAA5B0044B653 /* depthUtils.swift in Sources */,
+				FC2E50B022DEAA5B0044B653 /* HSPixelBuffer.swift in Sources */,
+				FC2E50AA22DEAA5B0044B653 /* transformUtils.swift in Sources */,
+				FC2E50A722DEAA5B0044B653 /* mathUtils.swift in Sources */,
+				FC2E50AF22DEAA5B0044B653 /* HSAuxiliaryImageData.swift in Sources */,
+				FC2E50AD22DEAA5B0044B653 /* HSPixelBufferIterator.swift in Sources */,
+				FC2E50AE22DEAA5B0044B653 /* HSBufferInfo.swift in Sources */,
+				FC9E2A2122DE9F5E0019C407 /* HSCameraUtilsMacOS.m in Sources */,
+				FC964BA522DEA7E4004517DA /* Empty.swift in Sources */,
+				FC2E50AB22DEAA5B0044B653 /* HS32BGRAPixelValue.swift in Sources */,
+				FC2E50A822DEAA5B0044B653 /* vImageUtils.swift in Sources */,
+				FC2E50B322DEAA5B0044B653 /* Rectangle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FC9E2A2222DE9F5E0019C407 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FC9E2A2322DE9F5E0019C407 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FC9E2A2522DE9F5E0019C407 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6DUV3UU8M8;
+				EXECUTABLE_PREFIX = lib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSCameraUtils-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FC9E2A2622DE9F5E0019C407 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6DUV3UU8M8;
+				EXECUTABLE_PREFIX = lib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "HSCameraUtils-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC9E2A1622DE9F5D0019C407 /* Build configuration list for PBXProject "HSCameraUtilsMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC9E2A2222DE9F5E0019C407 /* Debug */,
+				FC9E2A2322DE9F5E0019C407 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "HSCameraUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC9E2A2522DE9F5E0019C407 /* Debug */,
+				FC9E2A2622DE9F5E0019C407 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC9E2A1322DE9F5D0019C407 /* Project object */;
+}

@@ -1,6 +1,5 @@
 import Accelerate
 import CoreVideo
-import UIKit
 
 internal func withLockedBaseAddress<T>(
   _ buffer: CVPixelBuffer,

@@ -5,7 +5,7 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 project_dir=$(cd "$dir/" 2> /dev/null && pwd -P)
 
 # run swiftformat to format Swift files
-swiftformat $project_dir/HSCameraUtils --indent 2
+swiftformat $project_dir/source --indent 2
 
 # run clang-format to format Objective C files
 format=$(brew --prefix llvm)/bin/clang-format

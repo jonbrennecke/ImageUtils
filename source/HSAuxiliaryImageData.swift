@@ -34,6 +34,13 @@ public class HSAuxiliaryImageData {
     self.image = image
   }
 
+  public convenience init?(contentsOf url: URL) {
+    guard let data = try? Data(contentsOf: url) else {
+      return nil
+    }
+    self.init(data: data)
+  }
+
   public lazy var face: CIFaceFeature? = {
     let options = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
     guard let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: options) else {

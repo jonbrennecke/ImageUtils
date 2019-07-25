@@ -1,5 +1,6 @@
 import Accelerate
 import AVFoundation
+import CoreImage
 
 public struct HSImageBuffer {
   public let pixelBuffer: HSPixelBuffer
@@ -27,7 +28,7 @@ public struct HSImageBuffer {
     }
   }
 
-  public func makeImage() -> CGImage? {
+  public func makeCGImage() -> CGImage? {
     var buffer = makeVImageBuffer()
     let bufferInfo = pixelBuffer.bufferInfo
     var cgImageFormat = vImage_CGImageFormat(
@@ -52,6 +53,13 @@ public struct HSImageBuffer {
       return nil
     }
     return image?.takeRetainedValue()
+  }
+  
+  public func makeCIImage() -> CIImage? {
+    if let cgImage = makeCGImage() {
+      return CIImage(cgImage: cgImage)
+    }
+    return nil
   }
 
   public func resize(
@@ -78,7 +86,7 @@ public struct HSImageBuffer {
     // scale
     let resizeFlags = vImage_Flags(kvImageNoFlags)
     // TODO: (works but slower):
-//    let resizeFlags = vImage_Flags(kvImageHighQualityResampling)
+    // let resizeFlags = vImage_Flags(kvImageHighQualityResampling)
     if isGrayscale {
       let error = vImageScale_Planar8(&srcBuffer, &destBuffer, nil, resizeFlags)
       if error != kvImageNoError {

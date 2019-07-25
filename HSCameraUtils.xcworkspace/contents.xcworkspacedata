@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:HSCameraUtilsMacOS.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:HSCameraUtilsMacOS">
+   </FileRef>
+   <FileRef
+      location = "group:HSCameraUtils">
+   </FileRef>
+   <FileRef
+      location = "group:HSCameraUtils.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:source">
+   </FileRef>
+</Workspace>

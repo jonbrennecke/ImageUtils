@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC0E6E5922E105BC00B0C1C7 /* HSVideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E6E5822E105BC00B0C1C7 /* HSVideoWriter.swift */; };
+		FC0E6E5B22E105D500B0C1C7 /* HSVideoFrameBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E6E5A22E105D500B0C1C7 /* HSVideoFrameBuffer.swift */; };
 		FC114C0422D3DA7D008F333B /* HS32BGRAPixelValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */; };
 		FC664F3722CADC1800FD8AE7 /* HSPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */; };
 		FC664F3822CADC1800FD8AE7 /* HSImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B68022CAB163003EA230 /* HSImageBuffer.swift */; };
@@ -18,6 +20,7 @@
 		FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67222CAB02B003EA230 /* Point2D.swift */; };
 		FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67422CAB046003EA230 /* Rectangle.swift */; };
 		FC8C3D3F22CFF50F007015C8 /* transformUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */; };
+		FCADFE2422E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADFE2322E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift */; };
 		FCB7739822D7B87D0049BC10 /* vImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7739722D7B87D0049BC10 /* vImageUtils.swift */; };
 		FCD474B822CE92B800A279CF /* HSPixelBufferIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */; };
 		FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */; };
@@ -36,6 +39,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FC0E6E5822E105BC00B0C1C7 /* HSVideoWriter.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSVideoWriter.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FC0E6E5A22E105D500B0C1C7 /* HSVideoFrameBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSVideoFrameBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HS32BGRAPixelValue.swift; sourceTree = "<group>"; };
 		FC664F3022CADBF800FD8AE7 /* libHSCameraUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHSCameraUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC71B66822CAAFCF003EA230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 		FC71B68022CAB163003EA230 /* HSImageBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSAuxiliaryImageData.swift; sourceTree = "<group>"; };
 		FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = transformUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FCADFE2322E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSAVDepthDataToPixelBufferConverter.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCB7739722D7B87D0049BC10 /* vImageUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = vImageUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSPixelBufferIterator.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSBufferInfo.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -101,10 +107,13 @@
 				FC71B67622CAB04E003EA230 /* geometry */,
 				FC71B67E22CAB0C1003EA230 /* HSPixelBuffer.swift */,
 				FC71B68022CAB163003EA230 /* HSImageBuffer.swift */,
+				FC0E6E5A22E105D500B0C1C7 /* HSVideoFrameBuffer.swift */,
 				FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */,
 				FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */,
 				FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */,
+				FC0E6E5822E105BC00B0C1C7 /* HSVideoWriter.swift */,
 				FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */,
+				FCADFE2322E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift */,
 			);
 			path = source;
 			sourceTree = "<group>";
@@ -194,10 +203,13 @@
 				FC114C0422D3DA7D008F333B /* HS32BGRAPixelValue.swift in Sources */,
 				FCB7739822D7B87D0049BC10 /* vImageUtils.swift in Sources */,
 				FC664F3D22CADC2000FD8AE7 /* Size.swift in Sources */,
+				FCADFE2422E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift in Sources */,
 				FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */,
 				FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */,
 				FC664F3822CADC1800FD8AE7 /* HSImageBuffer.swift in Sources */,
 				FC664F3722CADC1800FD8AE7 /* HSPixelBuffer.swift in Sources */,
+				FC0E6E5B22E105D500B0C1C7 /* HSVideoFrameBuffer.swift in Sources */,
+				FC0E6E5922E105BC00B0C1C7 /* HSVideoWriter.swift in Sources */,
 				FC664F3C22CADC1D00FD8AE7 /* mathUtils.swift in Sources */,
 				FC664F3A22CADC1D00FD8AE7 /* pixelBufferUtils.swift in Sources */,
 				FC8C3D3F22CFF50F007015C8 /* transformUtils.swift in Sources */,
