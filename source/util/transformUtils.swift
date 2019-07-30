@@ -66,7 +66,7 @@ public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelB
   })
 }
 
-public func convertDisparityFloat32PixelBufferToUInt8(
+public func convertDisparityOrDepthPixelBufferToUInt8(
   pixelBuffer: HSPixelBuffer, pixelBufferPool: CVPixelBufferPool, bounds: ClosedRange<Float>
 ) -> HSPixelBuffer? {
   return pixelBuffer.withMutableDataPointer({ ptr -> HSPixelBuffer? in
@@ -94,13 +94,25 @@ public func convertDisparityFloat32PixelBufferToUInt8(
     defer {
       free(destinationBuffer.data)
     }
-    let error = vImageConvert_PlanarFtoPlanar8(
-      &sourceBuffer,
-      &destinationBuffer,
-      bounds.upperBound,
-      bounds.lowerBound,
-      vImage_Flags(kvImageNoFlags)
-    )
+    let isPlanar16F =
+      pixelBuffer.pixelFormatType == kCVPixelFormatType_DisparityFloat16
+      || pixelBuffer.pixelFormatType == kCVPixelFormatType_DepthFloat16
+    var error: vImage_Error?
+    if isPlanar16F {
+      error = vImageConvert_Planar16FtoPlanar8(
+        &sourceBuffer,
+        &destinationBuffer,
+        vImage_Flags(kvImageNoFlags)
+      )
+    } else {
+      error = vImageConvert_PlanarFtoPlanar8(
+        &sourceBuffer,
+        &destinationBuffer,
+        bounds.upperBound,
+        bounds.lowerBound,
+        vImage_Flags(kvImageNoFlags)
+      )
+    }
     if error != kvImageNoError {
       return nil
     }

@@ -9,7 +9,6 @@ public class HSVideoWriter {
     case recording(assetWriter: AVAssetWriter, startTime: CMTime)
   }
 
-  // TODO: rename
   public enum HSVideoWriterResult {
     case success
     case failure
@@ -38,6 +37,14 @@ public class HSVideoWriter {
       return .success
     }
     return .failure
+  }
+
+  public func add(metadataItem: AVMetadataItem) -> HSVideoWriterResult {
+    guard case let .readyToRecord(assetWriter) = state else {
+      return .failure
+    }
+    assetWriter.metadata.append(metadataItem)
+    return .success
   }
 
   public func startRecording(at startTime: CMTime) -> HSVideoWriterResult {

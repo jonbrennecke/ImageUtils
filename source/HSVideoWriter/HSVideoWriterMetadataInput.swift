@@ -1,10 +1,9 @@
 import AVFoundation
 
 public class HSVideoWriterMetadataInput: HSVideoWriterInput {
-  public typealias InputType = AVTimedMetadataGroup
+  public typealias InputType = AVMetadataItem
 
   private let metadataInput: AVAssetWriterInput
-  private let metadataAdaptor: AVAssetWriterInputMetadataAdaptor
 
   public var isEnabled: Bool = true {
     didSet {
@@ -16,15 +15,14 @@ public class HSVideoWriterMetadataInput: HSVideoWriterInput {
     return metadataInput
   }
 
-  init(isRealTime: Bool = true) {
-    metadataInput = AVAssetWriterInput(mediaType: .metadataObject, outputSettings: nil)
+  public init(isRealTime: Bool = false) {
+    metadataInput = AVAssetWriterInput(mediaType: .metadata, outputSettings: nil)
     metadataInput.expectsMediaDataInRealTime = isRealTime
-    metadataAdaptor = AVAssetWriterInputMetadataAdaptor(assetWriterInput: metadataInput)
   }
 
-  public func append(_ timedMetadataGroup: AVTimedMetadataGroup) {
+  public func append(_ metadataItem: AVMetadataItem) {
     if input.isReadyForMoreMediaData {
-      metadataAdaptor.append(timedMetadataGroup)
+      metadataInput.metadata.append(metadataItem)
     }
   }
 

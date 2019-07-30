@@ -11,13 +11,13 @@ swiftformat $project_dir/source --indent 2
 format=$(brew --prefix llvm)/bin/clang-format
 
 # .h files
-for f in $project_dir/HSCameraUtils/source/**/*.h
+for f in $project_dir/source/**/*.h
 do
   $format -i $f
 done
 
 # .m files
-for f in $project_dir/HSCameraUtils/source/**/*.m
+for f in $project_dir/source/**/*.m
 do
   $format -i $f
 done

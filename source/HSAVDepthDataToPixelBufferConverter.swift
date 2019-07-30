@@ -18,10 +18,11 @@ public class HSAVDepthDataToPixelBufferConverter {
       return nil
     }
     let buffer = HSPixelBuffer(depthData: depthData)
+    // TODO:
 //    let iterator: HSPixelBufferIterator<Float> = buffer.makeIterator()
 //    let bounds = iterator.bounds()
     let bounds: ClosedRange<Float> = 0.25 ... 3.5
-    guard let normalizedPixelBuffer = convertDisparityFloat32PixelBufferToUInt8(
+    guard let normalizedPixelBuffer = convertDisparityOrDepthPixelBufferToUInt8(
       pixelBuffer: buffer, pixelBufferPool: pool, bounds: bounds
     ) else {
       return nil
