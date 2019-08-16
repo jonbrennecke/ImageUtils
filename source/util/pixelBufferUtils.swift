@@ -1,7 +1,7 @@
 import Accelerate
 import CoreVideo
 
-internal func withLockedBaseAddress<T>(
+public func withLockedBaseAddress<T>(
   _ buffer: CVPixelBuffer,
   flags: CVPixelBufferLockFlags = .readOnly,
   _ callback: (CVPixelBuffer) -> T

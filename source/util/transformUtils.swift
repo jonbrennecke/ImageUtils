@@ -94,11 +94,11 @@ public func convertDisparityOrDepthPixelBufferToUInt8(
     defer {
       free(destinationBuffer.data)
     }
-    let isPlanar16F =
+    let is16BitData =
       pixelBuffer.pixelFormatType == kCVPixelFormatType_DisparityFloat16
       || pixelBuffer.pixelFormatType == kCVPixelFormatType_DepthFloat16
     var error: vImage_Error?
-    if isPlanar16F {
+    if is16BitData {
       error = vImageConvert_Planar16FtoPlanar8(
         &sourceBuffer,
         &destinationBuffer,
