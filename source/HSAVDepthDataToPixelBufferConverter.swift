@@ -14,7 +14,7 @@ public class HSAVDepthDataToPixelBufferConverter {
     size: Size<Int>,
     input inputPixelFormatType: OSType,
     output outputPixelFormatType: OSType,
-    bounds: ClosedRange<Float> = 0.5 ... 3.0
+    bounds: ClosedRange<Float> = 0.25 ... 5
   ) {
     self.size = size
     self.inputPixelFormatType = inputPixelFormatType
