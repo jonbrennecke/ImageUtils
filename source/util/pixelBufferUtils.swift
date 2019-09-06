@@ -50,11 +50,11 @@ public func createBuffer(
   return buffer
 }
 
-public func createCVPixelBufferPool(size: Size<Int>, pixelFormatType: OSType) -> CVPixelBufferPool? {
-  let poolAttributes = [kCVPixelBufferPoolMinimumBufferCountKey: 1] as CFDictionary
+public func createCVPixelBufferPool(size: Size<Int>, pixelFormatType: OSType, count: Int = 1) -> CVPixelBufferPool? {
+  let poolAttributes = [kCVPixelBufferPoolMinimumBufferCountKey: count] as CFDictionary
   let bufferAttributes = [
-    kCVPixelBufferCGImageCompatibilityKey: true,
-    kCVPixelBufferCGBitmapContextCompatibilityKey: true,
+//    kCVPixelBufferCGImageCompatibilityKey: true,
+//    kCVPixelBufferCGBitmapContextCompatibilityKey: true,
     kCVPixelBufferPixelFormatTypeKey: pixelFormatType,
     kCVPixelBufferWidthKey: size.width,
     kCVPixelBufferHeightKey: size.height,
