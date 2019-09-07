@@ -22,7 +22,7 @@ public class HSVideoWriterAudioInput: HSVideoWriterInput {
       AVEncoderAudioQualityForVBRKey: 91,
       AVEncoderBitRateStrategyKey: AVAudioBitRateStrategy_Variable,
       AVFormatIDKey: kAudioFormatMPEG4AAC,
-      AVEncoderBitRatePerChannelKey: 96000
+      AVEncoderBitRatePerChannelKey: 96000,
     ]
     audioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: outputSettings)
     audioInput.expectsMediaDataInRealTime = isRealTime
