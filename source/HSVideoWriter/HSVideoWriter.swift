@@ -55,15 +55,15 @@ public class HSVideoWriter {
     if !assetWriter.startWriting() {
       return .failure
     }
-    assetWriter.startSession(atSourceTime: .zero)
+    assetWriter.startSession(atSourceTime: startTime)
     return .success
   }
 
   public func stopRecording(at endTime: CMTime, _ completionHandler: @escaping (URL) -> Void) {
-    guard case let .recording(assetWriter, startTime) = state else {
+    guard case let .recording(assetWriter, _) = state else {
       return
     }
-    assetWriter.endSession(atSourceTime: endTime - startTime)
+    assetWriter.endSession(atSourceTime: endTime)
     assetWriter.finishWriting {
       completionHandler(assetWriter.outputURL)
     }

@@ -24,7 +24,6 @@ extension Size where T: BinaryFloatingPoint {
   }
 }
 
-
 extension Size where T: Comparable & SignedInteger {
   internal func forEach(_ callback: (Point2D<T>) -> Void) {
     for x in stride(from: 0, to: width, by: 1) {
