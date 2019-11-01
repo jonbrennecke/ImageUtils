@@ -10,6 +10,7 @@
 		FC0E6E5922E105BC00B0C1C7 /* HSVideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E6E5822E105BC00B0C1C7 /* HSVideoWriter.swift */; };
 		FC0E6E5B22E105D500B0C1C7 /* HSVideoFrameBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0E6E5A22E105D500B0C1C7 /* HSVideoFrameBuffer.swift */; };
 		FC114C0422D3DA7D008F333B /* HS32BGRAPixelValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */; };
+		FC234D2F236B54A90071BEC6 /* audioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC234D2E236B54A90071BEC6 /* audioUtils.swift */; };
 		FC297CD623231409006FAB7B /* HSVideoWriterAudioInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC297CD523231409006FAB7B /* HSVideoWriterAudioInput.swift */; };
 		FC552CA722EA00C500775729 /* HSVideoWriterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC552CA622EA00C500775729 /* HSVideoWriterInput.swift */; };
 		FC552CA922EA00DE00775729 /* HSVideoWriterTimedMetadataInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC552CA822EA00DE00775729 /* HSVideoWriterTimedMetadataInput.swift */; };
@@ -47,6 +48,7 @@
 		FC0E6E5822E105BC00B0C1C7 /* HSVideoWriter.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSVideoWriter.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC0E6E5A22E105D500B0C1C7 /* HSVideoFrameBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSVideoFrameBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC114C0322D3DA7D008F333B /* HS32BGRAPixelValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HS32BGRAPixelValue.swift; sourceTree = "<group>"; };
+		FC234D2E236B54A90071BEC6 /* audioUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = audioUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC297CD523231409006FAB7B /* HSVideoWriterAudioInput.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSVideoWriterAudioInput.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC552CA622EA00C500775729 /* HSVideoWriterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSVideoWriterInput.swift; sourceTree = "<group>"; };
 		FC552CA822EA00DE00775729 /* HSVideoWriterTimedMetadataInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSVideoWriterTimedMetadataInput.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				FC71B67C22CAB0AF003EA230 /* mathUtils.swift */,
 				FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */,
 				FCB7739722D7B87D0049BC10 /* vImageUtils.swift */,
+				FC234D2E236B54A90071BEC6 /* audioUtils.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCD474B822CE92B800A279CF /* HSPixelBufferIterator.swift in Sources */,
+				FC234D2F236B54A90071BEC6 /* audioUtils.swift in Sources */,
 				FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */,
 				FC664F3B22CADC1D00FD8AE7 /* depthUtils.swift in Sources */,
 				FC114C0422D3DA7D008F333B /* HS32BGRAPixelValue.swift in Sources */,
