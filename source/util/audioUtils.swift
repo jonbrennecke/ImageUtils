@@ -5,11 +5,10 @@ public enum CreateDownsampledAudioAssetError: Error {
   case failedToCreateOutputFile
   case failedToReadAsset
   case failedToSetupAssetWriter
-  case failedToSetupAssetReader
   case failedWithError(Error)
 }
 
-fileprivate let compressQueue = DispatchQueue(label: "compressQueue", qos: .background)
+fileprivate let downsampleQueue = DispatchQueue(label: "downsampleQueue", qos: .background)
 
 public func createDownSampled(
   asset: AVAsset,
@@ -22,8 +21,7 @@ public func createDownSampled(
   let channelLayoutAsData = Data(bytes: &channelLayout, count: MemoryLayout.size(ofValue: channelLayout))
   let compressionAudioSettings: [String: Any] = [
     AVNumberOfChannelsKey: 1,
-    AVSampleRateKey: 22050,
-    AVEncoderBitRateKey: 80000,
+    AVSampleRateKey: 16000,
     AVFormatIDKey: kAudioFormatMPEG4AAC,
     AVChannelLayoutKey: channelLayoutAsData
   ]
@@ -31,7 +29,21 @@ public func createDownSampled(
     AVFormatIDKey: kAudioFormatLinearPCM
   ]
   do {
+    guard let outputURL = try? makeEmptyTemporaryFile(withPathExtension: "m4a") else {
+     return completionHandler(.failure(.failedToCreateOutputFile))
+    }
+    let assetWriter = try AVAssetWriter(outputURL: outputURL, fileType: .m4a)
     let assetReader = try AVAssetReader(asset: asset)
+    
+    // input
+    let assetWriterAudioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: compressionAudioSettings)
+    assetWriterAudioInput.expectsMediaDataInRealTime = false
+    guard assetWriter.canAdd(assetWriterAudioInput) else {
+      return completionHandler(.failure(.failedToSetupAssetWriter))
+    }
+    assetWriter.add(assetWriterAudioInput)
+    
+    // output
     guard let audioTrack = asset.tracks(withMediaType: .audio).first else {
       return completionHandler(.failure(.assetMissingAudioTrack))
     }
@@ -41,47 +53,29 @@ public func createDownSampled(
       return completionHandler(.failure(.failedToReadAsset))
     }
     assetReader.add(assetReaderTrackOutput)
-    guard let outputURL = try? makeEmptyTemporaryFile(withPathExtension: "m4a") else {
-       return completionHandler(.failure(.failedToCreateOutputFile))
-     }
-    let assetWriter = try AVAssetWriter(outputURL: outputURL, fileType: .m4a)
-    let assetWriterAudioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: compressionAudioSettings)
-    assetWriterAudioInput.expectsMediaDataInRealTime = false
-     
-    guard assetWriter.canAdd(assetWriterAudioInput) else {
-      return completionHandler(.failure(.failedToSetupAssetWriter))
-    }
-    assetWriter.add(assetWriterAudioInput)
+    
     assetReader.timeRange = CMTimeRange(start: .zero, duration: asset.duration)
-    if !assetReader.startReading() {
-      if let error = assetReader.error {
-        return completionHandler(.failure(.failedWithError(error)))
-      }
-      return completionHandler(.failure(.failedToSetupAssetReader))
-    }
-    if !assetWriter.startWriting() {
-      if let error = assetWriter.error {
-        return completionHandler(.failure(.failedWithError(error)))
-      }
-      return completionHandler(.failure(.failedToSetupAssetWriter))
-    }
+    assetReader.startReading()
+    assetWriter.startWriting()
     assetWriter.startSession(atSourceTime: .zero)
-    while assetReader.status == .reading {
-      if assetWriterAudioInput.isReadyForMoreMediaData {
-        if let sampleBuffer = assetReaderTrackOutput.copyNextSampleBuffer(), CMSampleBufferDataIsReady(sampleBuffer) {
-          assetWriterAudioInput.append(sampleBuffer)
-        } else {
-          assetWriterAudioInput.markAsFinished()
+    assetWriterAudioInput.requestMediaDataWhenReady(on: downsampleQueue) {
+      while assetReader.status == .reading {
+        if assetWriterAudioInput.isReadyForMoreMediaData {
+          if let sampleBuffer = assetReaderTrackOutput.copyNextSampleBuffer(), CMSampleBufferDataIsReady(sampleBuffer) {
+            assetWriterAudioInput.append(sampleBuffer)
+          } else {
+            assetWriterAudioInput.markAsFinished()
+          }
+        }
+        if assetReader.status == .failed, let error = assetReader.error {
+          assetReader.cancelReading()
+          assetWriter.cancelWriting()
+          return completionHandler(.failure(.failedWithError(error)))
         }
       }
-      if assetReader.status == .failed, let error = assetReader.error {
-        assetReader.cancelReading()
-        assetWriter.cancelWriting()
-        return completionHandler(.failure(.failedWithError(error)))
+      assetWriter.finishWriting {
+        completionHandler(.success(outputURL))
       }
-    }
-    assetWriter.finishWriting {
-      completionHandler(.success(outputURL))
     }
   }
   catch {

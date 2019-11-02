@@ -26,9 +26,9 @@ class AudioTests: XCTestCase {
         expectation.fulfill()
       }
     }
+    waitForExpectations(timeout: 10000)
     XCTAssert(error == nil)
     XCTAssert(outputURL != nil)
-    waitForExpectations(timeout: 10000)
   }
 }
 
