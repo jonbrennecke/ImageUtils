@@ -11,7 +11,7 @@ class AudioTests: XCTestCase {
     loadTestVideoAsset() { result in
       switch result {
       case let .success(asset):
-        createDownSampled(asset: asset) { downsampleResult in
+        createDownSampledAudio(asset: asset) { downsampleResult in
           switch downsampleResult {
           case let .success(url):
             outputURL = url

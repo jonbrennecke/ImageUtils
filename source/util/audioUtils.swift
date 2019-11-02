@@ -10,7 +10,7 @@ public enum CreateDownsampledAudioAssetError: Error {
 
 fileprivate let downsampleQueue = DispatchQueue(label: "downsampleQueue", qos: .background)
 
-public func createDownSampled(
+public func createDownSampledAudio(
   asset: AVAsset,
   completionHandler: @escaping (Result<URL, CreateDownsampledAudioAssetError>) -> Void
 ) {
