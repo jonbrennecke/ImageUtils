@@ -26,11 +26,24 @@
 		FC664F3E22CADC2000FD8AE7 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67222CAB02B003EA230 /* Point2D.swift */; };
 		FC664F3F22CADC2000FD8AE7 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC71B67422CAB046003EA230 /* Rectangle.swift */; };
 		FC8C3D3F22CFF50F007015C8 /* transformUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */; };
+		FC9091A7236E24F50063E317 /* AudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9091A6236E24F50063E317 /* AudioTests.swift */; };
+		FC9091A9236E24F50063E317 /* libHSCameraUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC664F3022CADBF800FD8AE7 /* libHSCameraUtils.a */; };
+		FC9091D2236E25D10063E317 /* test_video.mov in Resources */ = {isa = PBXBuildFile; fileRef = FC9091D1236E25D10063E317 /* test_video.mov */; };
 		FCADFE2422E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADFE2322E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift */; };
 		FCB7739822D7B87D0049BC10 /* vImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7739722D7B87D0049BC10 /* vImageUtils.swift */; };
 		FCD474B822CE92B800A279CF /* HSPixelBufferIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */; };
 		FCDEEBED22CC5D1900B09AF2 /* HSBufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEEBEC22CC5D1900B09AF2 /* HSBufferInfo.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC9091AA236E24F50063E317 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC71B65B22CAAFCF003EA230 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC664F2F22CADBF800FD8AE7;
+			remoteInfo = HSCameraUtils;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		FC664F2E22CADBF800FD8AE7 /* CopyFiles */ = {
@@ -66,6 +79,10 @@
 		FC71B68022CAB163003EA230 /* HSImageBuffer.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSImageBuffer.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FC71B68222CAB17C003EA230 /* HSAuxiliaryImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSAuxiliaryImageData.swift; sourceTree = "<group>"; };
 		FC8C3D3E22CFF50F007015C8 /* transformUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = transformUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FC9091A4236E24F50063E317 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC9091A6236E24F50063E317 /* AudioTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AudioTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		FC9091A8236E24F50063E317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC9091D1236E25D10063E317 /* test_video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = test_video.mov; path = ../../../../Downloads/test_video.mov; sourceTree = "<group>"; };
 		FCADFE2322E1106A00E3C76A /* HSAVDepthDataToPixelBufferConverter.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSAVDepthDataToPixelBufferConverter.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCB7739722D7B87D0049BC10 /* vImageUtils.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = vImageUtils.swift; sourceTree = "<group>"; tabWidth = 2; };
 		FCD474B722CE92B800A279CF /* HSPixelBufferIterator.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HSPixelBufferIterator.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -79,6 +96,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC9091A1236E24F50063E317 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC9091A9236E24F50063E317 /* libHSCameraUtils.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +128,7 @@
 			children = (
 				FC71B66F22CAB008003EA230 /* source */,
 				FC71B66622CAAFCF003EA230 /* HSCameraUtils */,
+				FC9091A5236E24F50063E317 /* Tests */,
 				FC71B66522CAAFCF003EA230 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				FC664F3022CADBF800FD8AE7 /* libHSCameraUtils.a */,
+				FC9091A4236E24F50063E317 /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +193,16 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		FC9091A5236E24F50063E317 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FC9091D1236E25D10063E317 /* test_video.mov */,
+				FC9091A6236E24F50063E317 /* AudioTests.swift */,
+				FC9091A8236E24F50063E317 /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,18 +223,39 @@
 			productReference = FC664F3022CADBF800FD8AE7 /* libHSCameraUtils.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		FC9091A3236E24F50063E317 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC9091AE236E24F50063E317 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				FC9091A0236E24F50063E317 /* Sources */,
+				FC9091A1236E24F50063E317 /* Frameworks */,
+				FC9091A2236E24F50063E317 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC9091AB236E24F50063E317 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = FC9091A4236E24F50063E317 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FC71B65B22CAAFCF003EA230 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Jonathan Brennecke";
 				TargetAttributes = {
 					FC664F2F22CADBF800FD8AE7 = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					FC9091A3236E24F50063E317 = {
+						CreatedOnToolsVersion = 11.2;
 					};
 				};
 			};
@@ -214,9 +272,21 @@
 			projectRoot = "";
 			targets = (
 				FC664F2F22CADBF800FD8AE7 /* HSCameraUtils */,
+				FC9091A3236E24F50063E317 /* Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC9091A2236E24F50063E317 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC9091D2236E25D10063E317 /* test_video.mov in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FC664F2C22CADBF800FD8AE7 /* Sources */ = {
@@ -249,7 +319,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FC9091A0236E24F50063E317 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC9091A7236E24F50063E317 /* AudioTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FC9091AB236E24F50063E317 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC664F2F22CADBF800FD8AE7 /* HSCameraUtils */;
+			targetProxy = FC9091AA236E24F50063E317 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FC664F3522CADBF800FD8AE7 /* Debug */ = {
@@ -402,6 +488,44 @@
 			};
 			name = Release;
 		};
+		FC9091AC236E24F50063E317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6DUV3UU8M8;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonbrennecke.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FC9091AD236E24F50063E317 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6DUV3UU8M8;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonbrennecke.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -419,6 +543,15 @@
 			buildConfigurations = (
 				FC71B66A22CAAFCF003EA230 /* Debug */,
 				FC71B66B22CAAFCF003EA230 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC9091AE236E24F50063E317 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC9091AC236E24F50063E317 /* Debug */,
+				FC9091AD236E24F50063E317 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

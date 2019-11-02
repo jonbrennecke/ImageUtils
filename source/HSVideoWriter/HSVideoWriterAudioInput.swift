@@ -4,6 +4,15 @@ public class HSVideoWriterAudioInput: HSVideoWriterInput {
   public typealias InputType = CMSampleBuffer
 
   private let audioInput: AVAssetWriterInput
+  
+  public static let defaultOutputSettings: [String: Any] = [
+    AVNumberOfChannelsKey: 1,
+    AVSampleRateKey: 44100,
+    AVEncoderAudioQualityForVBRKey: 91,
+    AVEncoderBitRateStrategyKey: AVAudioBitRateStrategy_Variable,
+    AVFormatIDKey: kAudioFormatMPEG4AAC,
+    AVEncoderBitRatePerChannelKey: 96000,
+  ]
 
   public var isEnabled: Bool = true {
     didSet {
@@ -15,15 +24,7 @@ public class HSVideoWriterAudioInput: HSVideoWriterInput {
     return audioInput
   }
 
-  public init(isRealTime: Bool = true) {
-    let outputSettings: [String: Any] = [
-      AVNumberOfChannelsKey: 1,
-      AVSampleRateKey: 44100,
-      AVEncoderAudioQualityForVBRKey: 91,
-      AVEncoderBitRateStrategyKey: AVAudioBitRateStrategy_Variable,
-      AVFormatIDKey: kAudioFormatMPEG4AAC,
-      AVEncoderBitRatePerChannelKey: 96000,
-    ]
+  public init(isRealTime: Bool = true, outputSettings: [String: Any] = HSVideoWriterAudioInput.defaultOutputSettings) {
     audioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: outputSettings)
     audioInput.expectsMediaDataInRealTime = isRealTime
   }

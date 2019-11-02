@@ -1,6 +1,96 @@
 import AVFoundation
 
-public enum CreateAudioFileFailure: Error {
+public enum CreateDownsampledAudioAssetError: Error {
+  case assetMissingAudioTrack
+  case failedToCreateOutputFile
+  case failedToReadAsset
+  case failedToSetupAssetWriter
+  case failedToSetupAssetReader
+  case failedWithError(Error)
+}
+
+fileprivate let compressQueue = DispatchQueue(label: "compressQueue", qos: .background)
+
+public func createDownSampled(
+  asset: AVAsset,
+  completionHandler: @escaping (Result<URL, CreateDownsampledAudioAssetError>) -> Void
+) {
+  var channelLayout = AudioChannelLayout()
+  channelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Mono
+  channelLayout.mChannelBitmap = AudioChannelBitmap(rawValue: 0)
+  channelLayout.mNumberChannelDescriptions = 0
+  let channelLayoutAsData = Data(bytes: &channelLayout, count: MemoryLayout.size(ofValue: channelLayout))
+  let compressionAudioSettings: [String: Any] = [
+    AVNumberOfChannelsKey: 1,
+    AVSampleRateKey: 22050,
+    AVEncoderBitRateKey: 80000,
+    AVFormatIDKey: kAudioFormatMPEG4AAC,
+    AVChannelLayoutKey: channelLayoutAsData
+  ]
+  let decompressionAudioSettings: [String: Any] = [
+    AVFormatIDKey: kAudioFormatLinearPCM
+  ]
+  do {
+    let assetReader = try AVAssetReader(asset: asset)
+    guard let audioTrack = asset.tracks(withMediaType: .audio).first else {
+      return completionHandler(.failure(.assetMissingAudioTrack))
+    }
+    let assetReaderTrackOutput = AVAssetReaderTrackOutput(track: audioTrack, outputSettings: decompressionAudioSettings)
+    assetReaderTrackOutput.alwaysCopiesSampleData = true
+    guard assetReader.canAdd(assetReaderTrackOutput) else {
+      return completionHandler(.failure(.failedToReadAsset))
+    }
+    assetReader.add(assetReaderTrackOutput)
+    guard let outputURL = try? makeEmptyTemporaryFile(withPathExtension: "m4a") else {
+       return completionHandler(.failure(.failedToCreateOutputFile))
+     }
+    let assetWriter = try AVAssetWriter(outputURL: outputURL, fileType: .m4a)
+    let assetWriterAudioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: compressionAudioSettings)
+    assetWriterAudioInput.expectsMediaDataInRealTime = false
+     
+    guard assetWriter.canAdd(assetWriterAudioInput) else {
+      return completionHandler(.failure(.failedToSetupAssetWriter))
+    }
+    assetWriter.add(assetWriterAudioInput)
+    assetReader.timeRange = CMTimeRange(start: .zero, duration: asset.duration)
+    if !assetReader.startReading() {
+      if let error = assetReader.error {
+        return completionHandler(.failure(.failedWithError(error)))
+      }
+      return completionHandler(.failure(.failedToSetupAssetReader))
+    }
+    if !assetWriter.startWriting() {
+      if let error = assetWriter.error {
+        return completionHandler(.failure(.failedWithError(error)))
+      }
+      return completionHandler(.failure(.failedToSetupAssetWriter))
+    }
+    assetWriter.startSession(atSourceTime: .zero)
+    while assetReader.status == .reading {
+      if assetWriterAudioInput.isReadyForMoreMediaData {
+        if let sampleBuffer = assetReaderTrackOutput.copyNextSampleBuffer(), CMSampleBufferDataIsReady(sampleBuffer) {
+          assetWriterAudioInput.append(sampleBuffer)
+        } else {
+          assetWriterAudioInput.markAsFinished()
+        }
+      }
+      if assetReader.status == .failed, let error = assetReader.error {
+        assetReader.cancelReading()
+        assetWriter.cancelWriting()
+        return completionHandler(.failure(.failedWithError(error)))
+      }
+    }
+    assetWriter.finishWriting {
+      completionHandler(.success(outputURL))
+    }
+  }
+  catch {
+    return completionHandler(.failure(.failedWithError(error)))
+  }
+}
+
+
+public enum CreateAudioFileError: Error {
   case failedToCreateExportSession
   case assetMissingAudioTrack
   case failedToExportAudioFile
@@ -8,20 +98,20 @@ public enum CreateAudioFileFailure: Error {
 
 public func createTemporaryAudioFile(
   fromAsset asset: AVAsset,
-  completionHandler: @escaping (Result<URL, CreateAudioFileFailure>) -> Void
+  completionHandler: @escaping (Result<URL, CreateAudioFileError>) -> Void
 ) {
   let audioAssetTracks = asset.tracks(withMediaType: .audio)
   guard let audioAssetTrack = audioAssetTracks.last else {
     return completionHandler(.failure(.assetMissingAudioTrack))
   }
   guard
-    let outputURL = try? makeEmptyTemporaryFile(withPathExtension: "aiff"),
-    let assetExportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetPassthrough)
+    let outputURL = try? makeEmptyTemporaryFile(withPathExtension: "m4a"),
+    let assetExportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A)
   else {
     return completionHandler(.failure(.failedToCreateExportSession))
   }
   assetExportSession.outputURL = outputURL
-  assetExportSession.outputFileType = .aiff
+  assetExportSession.outputFileType = .m4a
   assetExportSession.timeRange = audioAssetTrack.timeRange
   assetExportSession.exportAsynchronously {
     if assetExportSession.status == .failed {

@@ -20,8 +20,8 @@ public class HSVideoWriter {
     state = .notReady
   }
 
-  public func prepareToRecord(to url: URL) -> HSVideoWriterResult {
-    guard let assetWriter = try? AVAssetWriter(outputURL: url, fileType: .mov) else {
+  public func prepareToRecord(to url: URL, fileType: AVFileType = .mov) -> HSVideoWriterResult {
+    guard let assetWriter = try? AVAssetWriter(outputURL: url, fileType: fileType) else {
       return .failure
     }
     state = .readyToRecord(assetWriter: assetWriter)
