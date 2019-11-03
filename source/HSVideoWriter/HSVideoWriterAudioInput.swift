@@ -4,7 +4,7 @@ public class HSVideoWriterAudioInput: HSVideoWriterInput {
   public typealias InputType = CMSampleBuffer
 
   private let audioInput: AVAssetWriterInput
-  
+
   public static let defaultOutputSettings: [String: Any] = [
     AVNumberOfChannelsKey: 1,
     AVSampleRateKey: 44100,

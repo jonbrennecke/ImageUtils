@@ -23,18 +23,18 @@ public func createDownSampledAudio(
     AVNumberOfChannelsKey: 1,
     AVSampleRateKey: 16000,
     AVFormatIDKey: kAudioFormatMPEG4AAC,
-    AVChannelLayoutKey: channelLayoutAsData
+    AVChannelLayoutKey: channelLayoutAsData,
   ]
   let decompressionAudioSettings: [String: Any] = [
-    AVFormatIDKey: kAudioFormatLinearPCM
+    AVFormatIDKey: kAudioFormatLinearPCM,
   ]
   do {
     guard let outputURL = try? makeEmptyTemporaryFile(withPathExtension: "m4a") else {
-     return completionHandler(.failure(.failedToCreateOutputFile))
+      return completionHandler(.failure(.failedToCreateOutputFile))
     }
     let assetWriter = try AVAssetWriter(outputURL: outputURL, fileType: .m4a)
     let assetReader = try AVAssetReader(asset: asset)
-    
+
     // input
     let assetWriterAudioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: compressionAudioSettings)
     assetWriterAudioInput.expectsMediaDataInRealTime = false
@@ -42,7 +42,7 @@ public func createDownSampledAudio(
       return completionHandler(.failure(.failedToSetupAssetWriter))
     }
     assetWriter.add(assetWriterAudioInput)
-    
+
     // output
     guard let audioTrack = asset.tracks(withMediaType: .audio).first else {
       return completionHandler(.failure(.assetMissingAudioTrack))
@@ -53,7 +53,7 @@ public func createDownSampledAudio(
       return completionHandler(.failure(.failedToReadAsset))
     }
     assetReader.add(assetReaderTrackOutput)
-    
+
     assetReader.timeRange = CMTimeRange(start: .zero, duration: asset.duration)
     assetReader.startReading()
     assetWriter.startWriting()
@@ -77,12 +77,10 @@ public func createDownSampledAudio(
         completionHandler(.success(outputURL))
       }
     }
-  }
-  catch {
+  } catch {
     return completionHandler(.failure(.failedWithError(error)))
   }
 }
-
 
 public enum CreateAudioFileError: Error {
   case failedToCreateExportSession
