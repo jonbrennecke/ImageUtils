@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.version                = version
   s.homepage               = 'https://github.com/jonbrennecke/image-utils'
   s.author                 = 'Jon Brennecke'
-  s.platforms              = { :ios => '9.0' }
+  s.platforms              = { :ios => '11.0' }
   s.source                 = source
   s.cocoapods_version      = '>= 1.2.0'
   s.license                = 'MIT'
