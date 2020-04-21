@@ -2,13 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:HSCameraUtilsMacOS.xcodeproj">
+      location = "group:/Users/jon/Projects/highstreet/backflip-camera-utils/ImageUtils.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:HSCameraUtilsMacOS">
+      location = "group:/Users/jon/Projects/highstreet/backflip-camera-utils/ImageUtilsMacOS">
    </FileRef>
    <FileRef
-      location = "group:HSCameraUtils">
+      location = "group:/Users/jon/Projects/highstreet/backflip-camera-utils/ImageUtils">
    </FileRef>
    <FileRef
       location = "group:HSCameraUtils.xcodeproj">

@@ -41,9 +41,9 @@
 		FC2E50A322DEAA5B0044B653 /* Point2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point2D.swift; sourceTree = "<group>"; };
 		FC2E50A422DEAA5B0044B653 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		FC2E50A522DEAA5B0044B653 /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
-		FC964BA322DEA7E4004517DA /* HSCameraUtils-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HSCameraUtils-Bridging-Header.h"; sourceTree = "<group>"; };
+		FC964BA322DEA7E4004517DA /* ImageUtils-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageUtils-Bridging-Header.h"; sourceTree = "<group>"; };
 		FC964BA422DEA7E4004517DA /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
-		FC9E2A1B22DE9F5D0019C407 /* libHSCameraUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHSCameraUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC9E2A1B22DE9F5D0019C407 /* libImageUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libImageUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9E2A1E22DE9F5E0019C407 /* HSCameraUtilsMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HSCameraUtilsMacOS.h; sourceTree = "<group>"; };
 		FC9E2A2022DE9F5E0019C407 /* HSCameraUtilsMacOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HSCameraUtilsMacOS.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,14 +103,14 @@
 				FC9E2A1D22DE9F5E0019C407 /* HSCameraUtilsMacOS */,
 				FC9E2A1C22DE9F5D0019C407 /* Products */,
 				FC964BA422DEA7E4004517DA /* Empty.swift */,
-				FC964BA322DEA7E4004517DA /* HSCameraUtils-Bridging-Header.h */,
+				FC964BA322DEA7E4004517DA /* ImageUtils-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
 		FC9E2A1C22DE9F5D0019C407 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC9E2A1B22DE9F5D0019C407 /* libHSCameraUtils.a */,
+				FC9E2A1B22DE9F5D0019C407 /* libImageUtils.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,9 +138,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		FC9E2A1A22DE9F5D0019C407 /* HSCameraUtils */ = {
+		FC9E2A1A22DE9F5D0019C407 /* ImageUtils */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "HSCameraUtils" */;
+			buildConfigurationList = FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "ImageUtils" */;
 			buildPhases = (
 				FC9E2A1722DE9F5D0019C407 /* Headers */,
 				FC9E2A1822DE9F5D0019C407 /* Sources */,
@@ -150,9 +150,9 @@
 			);
 			dependencies = (
 			);
-			name = HSCameraUtils;
+			name = ImageUtils;
 			productName = HSCameraUtilsMacOS;
-			productReference = FC9E2A1B22DE9F5D0019C407 /* libHSCameraUtils.a */;
+			productReference = FC9E2A1B22DE9F5D0019C407 /* libImageUtils.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FC9E2A1622DE9F5D0019C407 /* Build configuration list for PBXProject "HSCameraUtilsMacOS" */;
+			buildConfigurationList = FC9E2A1622DE9F5D0019C407 /* Build configuration list for PBXProject "ImageUtils" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -182,7 +182,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC9E2A1A22DE9F5D0019C407 /* HSCameraUtils */,
+				FC9E2A1A22DE9F5D0019C407 /* ImageUtils */,
 			);
 		};
 /* End PBXProject section */
@@ -339,7 +339,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "HSCameraUtils-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ImageUtils-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -359,7 +359,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "HSCameraUtils-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ImageUtils-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -367,7 +367,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC9E2A1622DE9F5D0019C407 /* Build configuration list for PBXProject "HSCameraUtilsMacOS" */ = {
+		FC9E2A1622DE9F5D0019C407 /* Build configuration list for PBXProject "ImageUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC9E2A2222DE9F5E0019C407 /* Debug */,
@@ -376,7 +376,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "HSCameraUtils" */ = {
+		FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "ImageUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC9E2A2522DE9F5E0019C407 /* Debug */,
