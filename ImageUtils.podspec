@@ -5,7 +5,7 @@ source[:commit] = `git rev-parse HEAD`.strip
 source[:tag] = "v#{version}"
 
 Pod::Spec.new do |s|
-  s.name                   = 'Image Utils'
+  s.name                   = 'ImageUtils'
   s.version                = version
   s.homepage               = 'https://github.com/jonbrennecke/image-utils'
   s.author                 = 'Jon Brennecke'
