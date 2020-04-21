@@ -74,16 +74,16 @@
 		FC0F7FA9244F862B0060E566 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				FC0F7FB6244F862B0060E566 /* VideoWriter */,
 				FC0F7FAA244F862B0060E566 /* util */,
+				FC0F7FBF244F862B0060E566 /* geometry */,
 				FC0F7FB1244F862B0060E566 /* VideoFrameBuffer.swift */,
 				FC0F7FB2244F862B0060E566 /* AuxiliaryImageData.swift */,
 				FC0F7FB3244F862B0060E566 /* ImageBuffer.swift */,
 				FC0F7FB4244F862B0060E566 /* AVDepthDataToPixelBufferConverter.swift */,
 				FC0F7FB5244F862B0060E566 /* BufferInfo.swift */,
-				FC0F7FB6244F862B0060E566 /* VideoWriter */,
 				FC0F7FBD244F862B0060E566 /* PixelValue32BGRA.swift */,
 				FC0F7FBE244F862B0060E566 /* PixelBufferIterator.swift */,
-				FC0F7FBF244F862B0060E566 /* geometry */,
 				FC0F7FC3244F862B0060E566 /* PixelBuffer.swift */,
 			);
 			path = source;
