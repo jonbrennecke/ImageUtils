@@ -1,7 +1,7 @@
 import AVFoundation
 import CoreImage
 
-public struct HSPixelBuffer {
+public struct PixelBuffer {
   public let buffer: CVPixelBuffer
 
   public init(pixelBuffer buffer: CVPixelBuffer) {
@@ -44,8 +44,8 @@ public struct HSPixelBuffer {
     }
   }
 
-  public var bufferInfo: HSBufferInfo {
-    return HSBufferInfo(pixelFormatType: pixelFormatType)
+  public var bufferInfo: BufferInfo {
+    return BufferInfo(pixelFormatType: pixelFormatType)
   }
 
   public func withDataPointer<R>(_ fn: (UnsafeRawPointer) -> R) -> R {
@@ -62,7 +62,7 @@ public struct HSPixelBuffer {
     }
   }
 
-  public func makeIterator<T>() -> HSPixelBufferIterator<T> {
-    return HSPixelBufferIterator(pixelBuffer: self)
+  public func makeIterator<T>() -> PixelBufferIterator<T> {
+    return PixelBufferIterator(pixelBuffer: self)
   }
 }

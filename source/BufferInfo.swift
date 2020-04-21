@@ -1,7 +1,7 @@
 import AVFoundation
 
-public struct HSBufferInfo {
-  public static let grayScaleUInt8 = HSBufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
+public struct BufferInfo {
+  public static let grayScaleUInt8 = BufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
 
   public let pixelFormatType: OSType
 

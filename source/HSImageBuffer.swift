@@ -2,19 +2,19 @@ import Accelerate
 import AVFoundation
 import CoreImage
 
-public struct HSImageBuffer {
-  public let pixelBuffer: HSPixelBuffer
+public struct ImageBuffer {
+  public let pixelBuffer: PixelBuffer
 
   public var size: Size<Int> {
     return pixelBuffer.size
   }
 
-  public init(pixelBuffer: HSPixelBuffer) {
+  public init(pixelBuffer: PixelBuffer) {
     self.pixelBuffer = pixelBuffer
   }
 
   public init(cvPixelBuffer buffer: CVPixelBuffer) {
-    pixelBuffer = HSPixelBuffer(pixelBuffer: buffer)
+    pixelBuffer = PixelBuffer(pixelBuffer: buffer)
   }
 
   public func makeVImageBuffer() -> vImage_Buffer {
@@ -66,7 +66,7 @@ public struct HSImageBuffer {
     to outputSize: Size<Int>,
     pixelBufferPool: CVPixelBufferPool,
     isGrayscale: Bool = false
-  ) -> HSImageBuffer? {
+  ) -> ImageBuffer? {
     let bufferInfo = pixelBuffer.bufferInfo
     var srcBuffer = makeVImageBuffer()
 
@@ -136,6 +136,6 @@ public struct HSImageBuffer {
       return nil
     }
     free(destData)
-    return HSImageBuffer(cvPixelBuffer: destPixelBuffer)
+    return ImageBuffer(cvPixelBuffer: destPixelBuffer)
   }
 }

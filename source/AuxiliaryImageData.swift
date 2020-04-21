@@ -2,7 +2,7 @@ import AVFoundation
 import CoreImage
 
 @available(iOS 12.0, *)
-public class HSAuxiliaryImageData {
+public class AuxiliaryImageData {
   public let image: CGImage
 
   public lazy var ciImage: CIImage = {
@@ -10,14 +10,14 @@ public class HSAuxiliaryImageData {
   }()
 
   private let segmentationMatte: AVPortraitEffectsMatte
-  public lazy var segmentationMatteBuffer: HSPixelBuffer = {
-    HSPixelBuffer(pixelBuffer: segmentationMatte.mattingImage)
+  public lazy var segmentationMatteBuffer: PixelBuffer = {
+    PixelBuffer(pixelBuffer: segmentationMatte.mattingImage)
   }()
 
   private let depthData: AVDepthData
-  public lazy var depthBuffer: HSPixelBuffer = {
+  public lazy var depthBuffer: PixelBuffer = {
     let depthDataFloat32 = depthData.converting(toDepthDataType: kCVPixelFormatType_DisparityFloat32)
-    return HSPixelBuffer(pixelBuffer: depthDataFloat32.depthDataMap)
+    return PixelBuffer(pixelBuffer: depthDataFloat32.depthDataMap)
   }()
 
   public init?(data: Data) {

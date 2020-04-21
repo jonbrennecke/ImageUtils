@@ -1,6 +1,6 @@
 import Foundation
 
-public struct HS32BGRAPixelValue {
+public struct PixelValue32BGRA {
   public let blue: UInt8
   public let green: UInt8
   public let red: UInt8
@@ -20,9 +20,9 @@ public struct HS32BGRAPixelValue {
     return UInt8(exactly: clamp(floatValue, min: 0, max: 255).rounded()) ?? 0
   }
 
-  public static let red = HS32BGRAPixelValue(blue: 0, green: 0, red: 0xFF, alpha: 0xFF)
-  public static let blue = HS32BGRAPixelValue(blue: 0xFF, green: 0, red: 0, alpha: 0xFF)
-  public static let green = HS32BGRAPixelValue(blue: 0, green: 0xFF, red: 0, alpha: 0xFF)
-  public static let black = HS32BGRAPixelValue(blue: 0, green: 0, red: 0, alpha: 0xFF)
-  public static let white = HS32BGRAPixelValue(blue: 0xFF, green: 0xFF, red: 0xFF, alpha: 0xFF)
+  public static let red = PixelValue32BGRA(blue: 0, green: 0, red: 0xFF, alpha: 0xFF)
+  public static let blue = PixelValue32BGRA(blue: 0xFF, green: 0, red: 0, alpha: 0xFF)
+  public static let green = PixelValue32BGRA(blue: 0, green: 0xFF, red: 0, alpha: 0xFF)
+  public static let black = PixelValue32BGRA(blue: 0, green: 0, red: 0, alpha: 0xFF)
+  public static let white = PixelValue32BGRA(blue: 0xFF, green: 0xFF, red: 0xFF, alpha: 0xFF)
 }

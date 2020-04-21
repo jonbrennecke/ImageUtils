@@ -1,8 +1,8 @@
 import Accelerate
 import AVFoundation
 
-public struct HSPixelBufferIterator<T> {
-  public let pixelBuffer: HSPixelBuffer
+public struct PixelBufferIterator<T> {
+  public let pixelBuffer: PixelBuffer
 
   public var size: Size<Int> {
     return pixelBuffer.size
@@ -55,9 +55,9 @@ public struct HSPixelBufferIterator<T> {
     pixelFormatType: OSType,
     pixelBufferPool: CVPixelBufferPool,
     transform: (T) -> R
-  ) -> HSPixelBufferIterator<R>? {
+  ) -> PixelBufferIterator<R>? {
     var pixels = mapPixels(transform)
-    let destBufferInfo = HSBufferInfo(pixelFormatType: pixelFormatType)
+    let destBufferInfo = BufferInfo(pixelFormatType: pixelFormatType)
     let destBytesPerRow = pixelBuffer.size.width * destBufferInfo.bytesPerPixel
     var destBuffer = vImage_Buffer(
       data: &pixels,
@@ -71,12 +71,12 @@ public struct HSPixelBufferIterator<T> {
     guard case .some = copyVImageBuffer(&destBuffer, to: &destPixelBuffer, bufferInfo: destBufferInfo) else {
       return nil
     }
-    let buffer = HSPixelBuffer(pixelBuffer: destPixelBuffer)
-    return HSPixelBufferIterator<R>(pixelBuffer: buffer)
+    let buffer = PixelBuffer(pixelBuffer: destPixelBuffer)
+    return PixelBufferIterator<R>(pixelBuffer: buffer)
   }
 }
 
-extension HSPixelBufferIterator where T: Numeric {
+extension PixelBufferIterator where T: Numeric {
   public func getPixels() -> [T] {
     return mapPixels { px in px }
   }
@@ -90,9 +90,9 @@ extension HSPixelBufferIterator where T: Numeric {
     return ret
   }
 
-  public func map(transform: (T) -> T) -> HSPixelBufferIterator<T>? {
+  public func map(transform: (T) -> T) -> PixelBufferIterator<T>? {
     var pixels = mapPixels(transform)
-    let destBufferInfo = HSBufferInfo(pixelFormatType: pixelBuffer.pixelFormatType)
+    let destBufferInfo = BufferInfo(pixelFormatType: pixelBuffer.pixelFormatType)
     let destBytesPerRow = pixelBuffer.size.width * destBufferInfo.bytesPerPixel
     var destBuffer = vImage_Buffer(
       data: &pixels,
@@ -104,12 +104,12 @@ extension HSPixelBufferIterator where T: Numeric {
     guard case .some = copyVImageBuffer(&destBuffer, to: &destPixelBuffer, bufferInfo: destBufferInfo) else {
       return nil
     }
-    let buffer = HSPixelBuffer(pixelBuffer: destPixelBuffer)
-    return HSPixelBufferIterator(pixelBuffer: buffer)
+    let buffer = PixelBuffer(pixelBuffer: destPixelBuffer)
+    return PixelBufferIterator(pixelBuffer: buffer)
   }
 }
 
-extension HSPixelBufferIterator where T: FloatingPoint {
+extension PixelBufferIterator where T: FloatingPoint {
   public func bounds() -> ClosedRange<T> {
     var min: T = T.greatestFiniteMagnitude
     var max: T = T.leastNonzeroMagnitude
@@ -124,7 +124,7 @@ extension HSPixelBufferIterator where T: FloatingPoint {
   }
 }
 
-extension HSPixelBufferIterator where T: FixedWidthInteger {
+extension PixelBufferIterator where T: FixedWidthInteger {
   public func bounds() -> ClosedRange<T> {
     var min: T = T.max
     var max: T = T.min

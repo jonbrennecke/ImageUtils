@@ -80,8 +80,8 @@ public func createPixelBuffer(
   data: UnsafeMutableRawPointer,
   size: Size<Int>,
   pool: CVPixelBufferPool,
-  bufferInfo: HSBufferInfo
-) -> HSPixelBuffer? {
+  bufferInfo: BufferInfo
+) -> PixelBuffer? {
   guard var vImageBuffer = createVImageBuffer(
     data: data,
     size: size,
@@ -93,7 +93,7 @@ public func createPixelBuffer(
     return nil
   }
   if case .some = copyVImageBuffer(&vImageBuffer, to: &pixelBuffer, bufferInfo: bufferInfo) {
-    return HSPixelBuffer(pixelBuffer: pixelBuffer)
+    return PixelBuffer(pixelBuffer: pixelBuffer)
   }
   return nil
 }

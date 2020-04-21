@@ -4,7 +4,7 @@ import Foundation
 public func createVImageBuffer(
   data: UnsafeMutableRawPointer,
   size: Size<Int>,
-  bufferInfo: HSBufferInfo
+  bufferInfo: BufferInfo
 ) -> vImage_Buffer? {
   return vImage_Buffer(
     data: data,
@@ -15,7 +15,7 @@ public func createVImageBuffer(
 }
 
 public func copyVImageBuffer(
-  _ buffer: inout vImage_Buffer, to pixelBuffer: inout CVPixelBuffer, bufferInfo: HSBufferInfo
+  _ buffer: inout vImage_Buffer, to pixelBuffer: inout CVPixelBuffer, bufferInfo: BufferInfo
 ) -> CVPixelBuffer? {
   var cgImageFormat = vImage_CGImageFormat(
     bitsPerComponent: UInt32(bufferInfo.bitsPerComponent),

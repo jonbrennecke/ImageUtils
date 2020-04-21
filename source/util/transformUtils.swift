@@ -1,15 +1,15 @@
 import Accelerate
 import AVFoundation
 
-public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelBufferPool: CVPixelBufferPool) -> HSPixelBuffer? {
-  return pixelBuffer.withMutableDataPointer({ ptr -> HSPixelBuffer? in
+public func convertBGRAPixelBufferToGrayscale(pixelBuffer: PixelBuffer, pixelBufferPool: CVPixelBufferPool) -> PixelBuffer? {
+  return pixelBuffer.withMutableDataPointer({ ptr -> PixelBuffer? in
     var sourceBuffer = vImage_Buffer(
       data: ptr,
       height: vImagePixelCount(pixelBuffer.size.height),
       width: vImagePixelCount(pixelBuffer.size.width),
       rowBytes: pixelBuffer.bytesPerRow
     )
-    let destinationBufferInfo = HSBufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
+    let destinationBufferInfo = BufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
     let destinationBytesPerRow = pixelBuffer.size.width * destinationBufferInfo.bytesPerPixel
     let destinationTotalBytes = pixelBuffer.size.height * destinationBytesPerRow
 
@@ -62,21 +62,21 @@ public func convertBGRAPixelBufferToGrayscale(pixelBuffer: HSPixelBuffer, pixelB
     ) else {
       return nil
     }
-    return HSPixelBuffer(pixelBuffer: destinationPixelBuffer)
+    return PixelBuffer(pixelBuffer: destinationPixelBuffer)
   })
 }
 
 public func convertDisparityOrDepthPixelBufferToUInt8(
-  pixelBuffer: HSPixelBuffer, pixelBufferPool: CVPixelBufferPool, bounds: ClosedRange<Float>
-) -> HSPixelBuffer? {
-  return pixelBuffer.withMutableDataPointer({ ptr -> HSPixelBuffer? in
+  pixelBuffer: PixelBuffer, pixelBufferPool: CVPixelBufferPool, bounds: ClosedRange<Float>
+) -> PixelBuffer? {
+  return pixelBuffer.withMutableDataPointer({ ptr -> PixelBuffer? in
     var sourceBuffer = vImage_Buffer(
       data: ptr,
       height: vImagePixelCount(pixelBuffer.size.height),
       width: vImagePixelCount(pixelBuffer.size.width),
       rowBytes: pixelBuffer.bytesPerRow
     )
-    let destinationBufferInfo = HSBufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
+    let destinationBufferInfo = BufferInfo(pixelFormatType: kCVPixelFormatType_OneComponent8)
     let destinationBytesPerRow = pixelBuffer.size.width * destinationBufferInfo.bytesPerPixel
     let destinationTotalBytes = pixelBuffer.size.height * destinationBytesPerRow
 
@@ -126,6 +126,6 @@ public func convertDisparityOrDepthPixelBufferToUInt8(
     ) else {
       return nil
     }
-    return HSPixelBuffer(pixelBuffer: destinationPixelBuffer)
+    return PixelBuffer(pixelBuffer: destinationPixelBuffer)
   })
 }
