@@ -7,30 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC0F7FC4244F862B0060E566 /* depthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FAB244F862B0060E566 /* depthUtils.swift */; };
-		FC0F7FC5244F862B0060E566 /* mathUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FAC244F862B0060E566 /* mathUtils.swift */; };
-		FC0F7FC6244F862B0060E566 /* audioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FAD244F862B0060E566 /* audioUtils.swift */; };
-		FC0F7FC7244F862B0060E566 /* vImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FAE244F862B0060E566 /* vImageUtils.swift */; };
-		FC0F7FC8244F862B0060E566 /* pixelBufferUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FAF244F862B0060E566 /* pixelBufferUtils.swift */; };
-		FC0F7FC9244F862B0060E566 /* transformUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB0244F862B0060E566 /* transformUtils.swift */; };
-		FC0F7FCA244F862B0060E566 /* VideoFrameBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB1244F862B0060E566 /* VideoFrameBuffer.swift */; };
-		FC0F7FCB244F862B0060E566 /* AuxiliaryImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB2244F862B0060E566 /* AuxiliaryImageData.swift */; };
-		FC0F7FCC244F862B0060E566 /* ImageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB3244F862B0060E566 /* ImageBuffer.swift */; };
-		FC0F7FCD244F862B0060E566 /* AVDepthDataToPixelBufferConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB4244F862B0060E566 /* AVDepthDataToPixelBufferConverter.swift */; };
-		FC0F7FCE244F862B0060E566 /* BufferInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB5244F862B0060E566 /* BufferInfo.swift */; };
-		FC0F7FCF244F862B0060E566 /* VideoWriterAudioInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB7244F862B0060E566 /* VideoWriterAudioInput.swift */; };
-		FC0F7FD0244F862B0060E566 /* VideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB8244F862B0060E566 /* VideoWriter.swift */; };
-		FC0F7FD1244F862B0060E566 /* VideoWriterTimedMetadataInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FB9244F862B0060E566 /* VideoWriterTimedMetadataInput.swift */; };
-		FC0F7FD2244F862B0060E566 /* VideoWriterFrameBufferInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FBA244F862B0060E566 /* VideoWriterFrameBufferInput.swift */; };
-		FC0F7FD3244F862B0060E566 /* VideoWriterMetadataInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FBB244F862B0060E566 /* VideoWriterMetadataInput.swift */; };
-		FC0F7FD4244F862B0060E566 /* VideoWriterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FBC244F862B0060E566 /* VideoWriterInput.swift */; };
-		FC0F7FD5244F862B0060E566 /* PixelValue32BGRA.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FBD244F862B0060E566 /* PixelValue32BGRA.swift */; };
-		FC0F7FD6244F862B0060E566 /* PixelBufferIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FBE244F862B0060E566 /* PixelBufferIterator.swift */; };
-		FC0F7FD7244F862B0060E566 /* Point2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FC0244F862B0060E566 /* Point2D.swift */; };
-		FC0F7FD8244F862B0060E566 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FC1244F862B0060E566 /* Size.swift */; };
-		FC0F7FD9244F862B0060E566 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FC2244F862B0060E566 /* Rectangle.swift */; };
-		FC0F7FDA244F862B0060E566 /* PixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FC3244F862B0060E566 /* PixelBuffer.swift */; };
+		FC0F7FE2244F87EE0060E566 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F7FE1244F87EE0060E566 /* ImageUtils.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FC0F7FDD244F87EE0060E566 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FC0F7FAB244F862B0060E566 /* depthUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = depthUtils.swift; sourceTree = "<group>"; };
@@ -56,12 +46,13 @@
 		FC0F7FC1244F862B0060E566 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		FC0F7FC2244F862B0060E566 /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		FC0F7FC3244F862B0060E566 /* PixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelBuffer.swift; sourceTree = "<group>"; };
+		FC0F7FDF244F87EE0060E566 /* libImageUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libImageUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC0F7FE1244F87EE0060E566 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		FC964BA322DEA7E4004517DA /* ImageUtils-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageUtils-Bridging-Header.h"; sourceTree = "<group>"; };
-		FC9E2A1B22DE9F5D0019C407 /* libImageUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libImageUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FC9E2A1922DE9F5D0019C407 /* Frameworks */ = {
+		FC0F7FDC244F87EE0060E566 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,10 +116,19 @@
 			path = geometry;
 			sourceTree = "<group>";
 		};
+		FC0F7FE0244F87EE0060E566 /* ImageUtils */ = {
+			isa = PBXGroup;
+			children = (
+				FC0F7FE1244F87EE0060E566 /* ImageUtils.swift */,
+			);
+			path = ImageUtils;
+			sourceTree = "<group>";
+		};
 		FC9E2A1222DE9F5D0019C407 = {
 			isa = PBXGroup;
 			children = (
 				FC0F7FA9244F862B0060E566 /* source */,
+				FC0F7FE0244F87EE0060E566 /* ImageUtils */,
 				FC9E2A1C22DE9F5D0019C407 /* Products */,
 				FC964BA322DEA7E4004517DA /* ImageUtils-Bridging-Header.h */,
 			);
@@ -137,39 +137,29 @@
 		FC9E2A1C22DE9F5D0019C407 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC9E2A1B22DE9F5D0019C407 /* libImageUtils.a */,
+				FC0F7FDF244F87EE0060E566 /* libImageUtils.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		FC9E2A1722DE9F5D0019C407 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		FC9E2A1A22DE9F5D0019C407 /* ImageUtils */ = {
+		FC0F7FDE244F87EE0060E566 /* ImageUtils */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "ImageUtils" */;
+			buildConfigurationList = FC0F7FE3244F87EE0060E566 /* Build configuration list for PBXNativeTarget "ImageUtils" */;
 			buildPhases = (
-				FC9E2A1722DE9F5D0019C407 /* Headers */,
-				FC9E2A1822DE9F5D0019C407 /* Sources */,
-				FC9E2A1922DE9F5D0019C407 /* Frameworks */,
+				FC0F7FDB244F87EE0060E566 /* Sources */,
+				FC0F7FDC244F87EE0060E566 /* Frameworks */,
+				FC0F7FDD244F87EE0060E566 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ImageUtils;
-			productName = HSCameraUtilsMacOS;
-			productReference = FC9E2A1B22DE9F5D0019C407 /* libImageUtils.a */;
+			productName = ImageUtils;
+			productReference = FC0F7FDF244F87EE0060E566 /* libImageUtils.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -178,12 +168,12 @@
 		FC9E2A1322DE9F5D0019C407 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Jonathan Brennecke";
 				TargetAttributes = {
-					FC9E2A1A22DE9F5D0019C407 = {
-						CreatedOnToolsVersion = 10.2.1;
-						LastSwiftMigration = 1020;
+					FC0F7FDE244F87EE0060E566 = {
+						CreatedOnToolsVersion = 11.2.1;
 					};
 				};
 			};
@@ -199,45 +189,58 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC9E2A1A22DE9F5D0019C407 /* ImageUtils */,
+				FC0F7FDE244F87EE0060E566 /* ImageUtils */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FC9E2A1822DE9F5D0019C407 /* Sources */ = {
+		FC0F7FDB244F87EE0060E566 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC0F7FC8244F862B0060E566 /* pixelBufferUtils.swift in Sources */,
-				FC0F7FCE244F862B0060E566 /* BufferInfo.swift in Sources */,
-				FC0F7FD0244F862B0060E566 /* VideoWriter.swift in Sources */,
-				FC0F7FD8244F862B0060E566 /* Size.swift in Sources */,
-				FC0F7FD2244F862B0060E566 /* VideoWriterFrameBufferInput.swift in Sources */,
-				FC0F7FD3244F862B0060E566 /* VideoWriterMetadataInput.swift in Sources */,
-				FC0F7FCB244F862B0060E566 /* AuxiliaryImageData.swift in Sources */,
-				FC0F7FC4244F862B0060E566 /* depthUtils.swift in Sources */,
-				FC0F7FD1244F862B0060E566 /* VideoWriterTimedMetadataInput.swift in Sources */,
-				FC0F7FC9244F862B0060E566 /* transformUtils.swift in Sources */,
-				FC0F7FD4244F862B0060E566 /* VideoWriterInput.swift in Sources */,
-				FC0F7FD9244F862B0060E566 /* Rectangle.swift in Sources */,
-				FC0F7FD7244F862B0060E566 /* Point2D.swift in Sources */,
-				FC0F7FCC244F862B0060E566 /* ImageBuffer.swift in Sources */,
-				FC0F7FCF244F862B0060E566 /* VideoWriterAudioInput.swift in Sources */,
-				FC0F7FC5244F862B0060E566 /* mathUtils.swift in Sources */,
-				FC0F7FDA244F862B0060E566 /* PixelBuffer.swift in Sources */,
-				FC0F7FC7244F862B0060E566 /* vImageUtils.swift in Sources */,
-				FC0F7FD6244F862B0060E566 /* PixelBufferIterator.swift in Sources */,
-				FC0F7FCD244F862B0060E566 /* AVDepthDataToPixelBufferConverter.swift in Sources */,
-				FC0F7FC6244F862B0060E566 /* audioUtils.swift in Sources */,
-				FC0F7FCA244F862B0060E566 /* VideoFrameBuffer.swift in Sources */,
-				FC0F7FD5244F862B0060E566 /* PixelValue32BGRA.swift in Sources */,
+				FC0F7FE2244F87EE0060E566 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		FC0F7FE4244F87EE0060E566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6DUV3UU8M8;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FC0F7FE5244F87EE0060E566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6DUV3UU8M8;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FC9E2A2222DE9F5E0019C407 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -349,62 +352,23 @@
 			};
 			name = Release;
 		};
-		FC9E2A2522DE9F5E0019C407 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6DUV3UU8M8;
-				EXECUTABLE_PREFIX = lib;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "ImageUtils-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		FC9E2A2622DE9F5E0019C407 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6DUV3UU8M8;
-				EXECUTABLE_PREFIX = lib;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "ImageUtils-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FC0F7FE3244F87EE0060E566 /* Build configuration list for PBXNativeTarget "ImageUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC0F7FE4244F87EE0060E566 /* Debug */,
+				FC0F7FE5244F87EE0060E566 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FC9E2A1622DE9F5D0019C407 /* Build configuration list for PBXProject "ImageUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC9E2A2222DE9F5E0019C407 /* Debug */,
 				FC9E2A2322DE9F5E0019C407 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FC9E2A2422DE9F5E0019C407 /* Build configuration list for PBXNativeTarget "ImageUtils" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FC9E2A2522DE9F5E0019C407 /* Debug */,
-				FC9E2A2622DE9F5E0019C407 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
