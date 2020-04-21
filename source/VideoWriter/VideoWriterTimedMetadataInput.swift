@@ -1,6 +1,6 @@
 import AVFoundation
 
-public class HSVideoWriterTimedMetadataInput: HSVideoWriterInput {
+public class VideoWriterTimedMetadataInput: VideoWriterInput {
   public typealias InputType = AVTimedMetadataGroup
 
   private let metadataInput: AVAssetWriterInput
@@ -16,6 +16,7 @@ public class HSVideoWriterTimedMetadataInput: HSVideoWriterInput {
     return metadataInput
   }
 
+  @available(macOS, unavailable)
   public init(isRealTime: Bool = true) {
     metadataInput = AVAssetWriterInput(mediaType: .metadataObject, outputSettings: nil)
     metadataInput.expectsMediaDataInRealTime = isRealTime

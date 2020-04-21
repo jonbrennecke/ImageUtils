@@ -1,6 +1,6 @@
 import AVFoundation
 
-public class HSVideoWriterAudioInput: HSVideoWriterInput {
+public class VideoWriterAudioInput: VideoWriterInput {
   public typealias InputType = CMSampleBuffer
 
   private let audioInput: AVAssetWriterInput
@@ -24,7 +24,7 @@ public class HSVideoWriterAudioInput: HSVideoWriterInput {
     return audioInput
   }
 
-  public init(isRealTime: Bool = true, outputSettings: [String: Any] = HSVideoWriterAudioInput.defaultOutputSettings) {
+  public init(isRealTime: Bool = true, outputSettings: [String: Any] = VideoWriterAudioInput.defaultOutputSettings) {
     audioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: outputSettings)
     audioInput.expectsMediaDataInRealTime = isRealTime
   }

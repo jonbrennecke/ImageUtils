@@ -1,6 +1,6 @@
 import AVFoundation
 
-public class HSAVDepthDataToPixelBufferConverter {
+public class AVDepthDataToPixelBufferConverter {
   private let size: Size<Int>
   private let inputPixelFormatType: OSType
   private let outputPixelFormatType: OSType
@@ -22,7 +22,7 @@ public class HSAVDepthDataToPixelBufferConverter {
     self.bounds = bounds
   }
 
-  public func convert(depthData: AVDepthData) -> HSPixelBuffer? {
+  public func convert(depthData: AVDepthData) -> PixelBuffer? {
     guard let pool = pixelBufferPool else {
       return nil
     }
@@ -30,7 +30,7 @@ public class HSAVDepthDataToPixelBufferConverter {
     let convertedDepthData = !isCorrectInputFormatType
       ? depthData.converting(toDepthDataType: inputPixelFormatType)
       : depthData
-    let buffer = HSPixelBuffer(depthData: convertedDepthData)
+    let buffer = PixelBuffer(depthData: convertedDepthData)
     guard let normalizedPixelBuffer = convertDisparityOrDepthPixelBufferToUInt8(
       pixelBuffer: buffer, pixelBufferPool: pool, bounds: bounds
     ) else {

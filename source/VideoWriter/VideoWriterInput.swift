@@ -1,6 +1,6 @@
 import AVFoundation
 
-public protocol HSVideoWriterInput {
+public protocol VideoWriterInput {
   associatedtype InputType
   var input: AVAssetWriterInput { get }
   var isEnabled: Bool { get set }

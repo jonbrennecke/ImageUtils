@@ -1,14 +1,14 @@
 import AVFoundation
 
-public struct HSVideoFrameBuffer {
-  public let pixelBuffer: HSPixelBuffer
+public struct VideoFrameBuffer {
+  public let pixelBuffer: PixelBuffer
   public let presentationTime: CMTime
 
   public var size: Size<Int> {
     return pixelBuffer.size
   }
 
-  public init(pixelBuffer: HSPixelBuffer, presentationTime: CMTime) {
+  public init(pixelBuffer: PixelBuffer, presentationTime: CMTime) {
     self.pixelBuffer = pixelBuffer
     self.presentationTime = presentationTime
   }

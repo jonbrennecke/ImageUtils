@@ -1,6 +1,6 @@
 import AVFoundation
 
-public class HSVideoWriterMetadataInput: HSVideoWriterInput {
+public class VideoWriterMetadataInput: VideoWriterInput {
   public typealias InputType = AVMetadataItem
 
   private let metadataInput: AVAssetWriterInput

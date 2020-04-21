@@ -1,7 +1,7 @@
 import AVFoundation
 
-public class HSVideoWriterFrameBufferInput: HSVideoWriterInput {
-  public typealias InputType = HSVideoFrameBuffer
+public class VideoWriterFrameBufferInput: VideoWriterInput {
+  public typealias InputType = VideoFrameBuffer
 
   private let videoInput: AVAssetWriterInput
   private let pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor
@@ -34,7 +34,7 @@ public class HSVideoWriterFrameBufferInput: HSVideoWriterInput {
     )
   }
 
-  public func append(_ videoFrameBuffer: HSVideoFrameBuffer) {
+  public func append(_ videoFrameBuffer: VideoFrameBuffer) {
     if input.isReadyForMoreMediaData {
       let buffer = videoFrameBuffer.pixelBuffer.buffer
       pixelBufferAdaptor.append(buffer, withPresentationTime: videoFrameBuffer.presentationTime)

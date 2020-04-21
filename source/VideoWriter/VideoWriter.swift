@@ -1,6 +1,6 @@
 import AVFoundation
 
-public class HSVideoWriter {
+public class VideoWriter {
   internal static let queue = DispatchQueue(label: "com.jonbrennecke.HSVideoWriter.inputQueue")
 
   private enum State {
@@ -28,7 +28,7 @@ public class HSVideoWriter {
     return .success
   }
 
-  public func add<T: HSVideoWriterInput>(input: T) -> HSVideoWriterResult {
+  public func add<T: VideoWriterInput>(input: T) -> HSVideoWriterResult {
     guard case let .readyToRecord(assetWriter) = state else {
       return .failure
     }
