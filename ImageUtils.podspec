@@ -1,10 +1,7 @@
-version = '0.0.3'
-
-source = { :git => 'https://github.com/jonbrennecke/image-utils.git' }
-source[:commit] = `git rev-parse HEAD`.strip
-source[:tag] = "v#{version}"
+version = '0.0.4'
 
 Pod::Spec.new do |s|
+  s.source                 = { :git => 'https://github.com/jonbrennecke/image-utils.git', :tag => "v#{version}" }
   s.name                   = 'ImageUtils'
   s.version                = version
   s.homepage               = 'https://github.com/jonbrennecke/image-utils'
