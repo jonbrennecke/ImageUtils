@@ -5,7 +5,7 @@ Low-level image and video processing utilities for high-performance apps.
 
 ## Motivation
 
-This library came about during the creation of my app [BOCA](https://apps.apple.com/us/app/boca-portrait-mode-videos/id1478361742). BOCA captures "portrait mode" in realtime and needed efficient processing of depth data. The built in methods to convert between AVDepthData and CIImage are quite a bit faster than the built-in methods in the standard iOS SDK.
+This library came about during the creation of my app [BOCA](https://apps.apple.com/us/app/boca-portrait-mode-videos/id1478361742). BOCA captures "portrait mode" in realtime and needed efficient processing of depth data. The methods to convert between AVDepthData and CIImage are quite a bit faster than the built-in methods in the standard iOS SDK.
 
 See [DepthBlurFilter](https://github.com/jonbrennecke/Camera/blob/master/Source/filters/DepthBlurFilter.swift) for the implemtation of the depth-of-field "Portrait Mode" effect.
 
